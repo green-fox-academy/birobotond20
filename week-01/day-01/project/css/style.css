@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+    font-family: Roboto, sans;
+    padding: 0 20%;
+}
+
+div {
+    padding: 0 2%;
+}
+
+#header {
+    background-color: orange;
+    color: white;
+}
+
+#header h1 {
+    display: inline;
+    margin-left: 0.5em;
+}
+
+#wrap {
+      padding: 0;
+}
+
+textarea { 
+    width:100%;
+}
+
+#button {
+    margin-top: 0.5em;
+    padding: 0;
+}
+
+#posts {
+    margin-top: 2em;
+}
+
+.post {
+    border: 1px solid black;
+    padding: 1em;
+    margin-top: 2em;
+}
+
+.post h1 {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+#logo {
+    display: inline;
+    width: 2em;
+    vertical-align: text-bottom;
+}
+
+#new-post-section {
+    margin-top: 2em;
+    background-color: #f2f2f2;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+#new-post-section h1{
+    margin: 0;
+    padding: 0;
+}

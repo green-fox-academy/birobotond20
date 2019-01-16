@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>The Blog</title>
+        <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    </head>
+
+    <body>
+        <div id="header">
+            <img src="./assets/logo.png" alt="Blog" id="logo"/>
+            <h1>The blog</h1>
+        </div>
+
+        <div id="new-post-section">
+            <h1>Add new post</h1>
+
+            <h2>Title</h2>
+
+            <input 
+                required 
+                type="text" 
+                id="comment-title" 
+                name="Title" 
+                minlength="4" maxlength="50" size="20" 
+                placeholder="Comment title"
+                >
+
+            <h2>Content</h2>
+
+            <div id="wrap">
+                <textarea 
+                    class="black-border"
+                    required
+                    name="textarea"
+                    rows="10"
+                    placeholder="Comment here..."
+                    maxlength="1000"></textarea>
+            </div>
+            
+            <div id="button">
+                <button>Submit</button>
+            </div>
+        </div>
+
+        <div id="posts">
+
+            <h2>Posts</h2>
+            
+            <div class="post">
+                <h1>Post title</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget odio ut ante gravida lobortis. Duis risus nulla, dignissim ut gravida in, vestibulum in nunc. Praesent lectus elit, efficitur vitae ornare id, rutrum a neque. Quisque ullamcorper eros in dui imperdiet scelerisque. Donec faucibus, felis ac eleifend fringilla, turpis magna facilisis urna, in euismod nisl dui eget augue. Sed est erat, dictum efficitur dui at, cursus efficitur ligula. Praesent fringilla tortor id risus ullamcorper, gravida laoreet erat tempor. Praesent feugiat condimentum velit, eget cursus nulla viverra ut. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer sagittis maximus dolor, sit amet interdum magna laoreet sit amet.</p>
+            </div>
+
+            <div class="post">
+                    <h1>Post title</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget odio ut ante gravida lobortis. Duis risus nulla, dignissim ut gravida in, vestibulum in nunc. Praesent lectus elit, efficitur vitae ornare id, rutrum a neque. Quisque ullamcorper eros in dui imperdiet scelerisque. Donec faucibus, felis ac eleifend fringilla, turpis magna facilisis urna, in euismod nisl dui eget augue. Sed est erat, dictum efficitur dui at, cursus efficitur ligula. Praesent fringilla tortor id risus ullamcorper, gravida laoreet erat tempor. Praesent feugiat condimentum velit, eget cursus nulla viverra ut. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer sagittis maximus dolor, sit amet interdum magna laoreet sit amet.</p>
+                </div>
+        </div>
+    </body>
+</html>
