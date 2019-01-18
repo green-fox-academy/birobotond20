@@ -8,7 +8,7 @@ public class SubStr {
 
         String input, q;
         Scanner scanner = new Scanner(System.in);
-        
+
 
         //  Example:
         System.out.println(subStr("this is what I'm searching in", "searching"));
