@@ -22,9 +22,7 @@ public class DrawPyramid {
 
         for (int i = 1; i <= lines; i++){
             for (int j = 1; j <= lines * 2 - 1; j++){
-                if (j == lines ){
-                    System.out.print("*");
-                } else if ((j <= lines + (i -1)) && (j >= lines - (i -1))){
+                if ((j <= lines + (i -1)) && (j >= lines - (i -1))){
                     System.out.print("*");
                 }
                 else {
