@@ -7,10 +7,20 @@ public class SubStr {
         //  Returns `-1` if the second string is not in the first one
 
         //  Example:
-        System.out.println(subStr("this is what I'm searching in", "searching"));
+        // System.out.println(subStr("this is what I'm searching in", "searching"));
         //  should print: `17`
-        System.out.println(subStr("this is what I'm searching in", "not"));
+        // System.out.println(subStr("this is what I'm searching in", "not"));
         //  should print: `-1`
+
+        String input = "";
+        String word = "";
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please give me the string to search in: ");
+        input = scanner.nextLine();
+        System.out.println("Please give me the string to search for: ");
+        word = scanner.nextLine();
+        System.out.println(subStr(input, word));
+
     }
 
     private static int subStr(String input, String word) throws NullPointerException {
