@@ -17,10 +17,9 @@ import java.util.Scanner;
 public class DrawDiamond {
     public static void main(String[] args) {
 
-        int lines;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please give me the number of lines: ");
-        lines = scanner.nextInt();
+        int lines = scanner.nextInt();
 
         for (int i = 1; i <= lines * 2 - 1; i++){
             for (int j = 1; j <= lines * 2 - 1; j++){
