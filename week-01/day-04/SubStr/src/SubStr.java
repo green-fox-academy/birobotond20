@@ -6,10 +6,6 @@ public class SubStr {
         //  Returns the starting index where the second one is starting in the first one
         //  Returns `-1` if the second string is not in the first one
 
-        String input, q;
-        Scanner scanner = new Scanner(System.in);
-
-
         //  Example:
         System.out.println(subStr("this is what I'm searching in", "searching"));
         //  should print: `17`
@@ -17,27 +13,30 @@ public class SubStr {
         //  should print: `-1`
     }
 
-    public static int subStr(String input, String q) throws NullPointerException {
+    private static int subStr(String input, String word) throws NullPointerException {
 
         if (input == null || input.length() == 0){
             throw new NullPointerException("String is null or is of length 0");
         }
 
         input = input.toLowerCase().trim();
-        q = q.toLowerCase().trim();
-        int foundCharAt;
-        int startIndex = 0;
-        int startsAt = 0;
+        word = word.toLowerCase().trim();
+        StringBuilder substr = new StringBuilder();
+        int lastGoodIndex = input.length() - word.length();
+        int foundCharIndex;
 
-        for (int j=0; j < q.length(); j++){
-            foundCharAt = input.indexOf(q.charAt(j), startIndex);
-            if (foundCharAt < 0){
-                return 1;
+        for (int i=0; i <= lastGoodIndex; i++){
+            substr.delete(0,substr.length());
+            foundCharIndex = input.indexOf(word.charAt(0), i);
+            if (foundCharIndex < 0 || foundCharIndex > lastGoodIndex) {
+                return - 1;
+            } else {
+                substr.append(input, foundCharIndex, foundCharIndex + word.length());
+                if (word.contentEquals(substr)) {
+                    return foundCharIndex;
+                }
             }
-            startIndex = foundCharAt;
         }
-
-
         return -1;
     }
 }
