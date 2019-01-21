@@ -35,11 +35,11 @@ public class SubStr {
         int lastGoodIndex = input.length() - word.length();
         int foundCharIndex;
 
-        for (int i=0; i <= lastGoodIndex; i++){
-            substr.delete(0,substr.length());
+        for (int i=0; i <= lastGoodIndex; i++) {
+            substr.delete(0, substr.length());
             foundCharIndex = input.indexOf(word.charAt(0), i);
             if (foundCharIndex < 0 || foundCharIndex > lastGoodIndex) {
-                return - 1;
+                return -1;
             } else {
                 substr.append(input, foundCharIndex, foundCharIndex + word.length());
                 if (word.contentEquals(substr)) {
