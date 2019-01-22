@@ -23,6 +23,7 @@ public class ElementFinder{
 
     // Method 2
     private static String containsSeven(ArrayList<Integer> input){
+
         if (input.contains(7)){
             return "Hoorray";
         }
