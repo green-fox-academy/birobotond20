@@ -49,9 +49,9 @@ public class StudentCounter {
         ArrayList<String> peopleWith4PlusCandies = new ArrayList<>();
         int sumOfAges = 0;
 
-        for(int i = 0; i < listOfMaps.size(); i++){
-            if ((int)listOfMaps.get(i).get("candies") > 4){
-                peopleWith4PlusCandies.add((String)listOfMaps.get(i).get("name"));
+        for(int i = 0; i < listOfMaps.size(); i++){                                     // Iterate through the list of HashMaps
+            if ((int)listOfMaps.get(i).get("candies") > 4){                             // get item from list in the HashMap get(i)
+                peopleWith4PlusCandies.add((String)listOfMaps.get(i).get("name"));      // and get and add name to a list if the number of candies is bigger than 4
                 System.out.println(listOfMaps.get(i).get("candies"));
             } else {
                 //Number valami = (Number)listOfMaps.get(i).get("age");
