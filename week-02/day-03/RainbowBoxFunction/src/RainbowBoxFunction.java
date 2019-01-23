@@ -11,15 +11,17 @@ public class RainbowBoxFunction {
         // and draws a square of that size and color to the center of the canvas.
         // Create a loop that fills the canvas with rainbow colored squares.
 
-        for (int i = 1; i < 10; i++){
-            squareDraw(i * 20, 25 * i, graphics);
-        }
+        String[] colors = {"#FF0000", "#FFA500", "#FFFF00", "#008000", "#0000FF", "#4B0082", "#EE82EE"};
+
+        squareDraw(0, colors, graphics);
     }
 
-    private static void squareDraw(int size, int red, Graphics graphics){
-        int calcSize = 200 - size;
-        graphics.setColor(new Color(red, 0, 0));
-        graphics.fillRect((WIDTH / 2) - (calcSize / 2), (HEIGHT / 2) - (calcSize / 2), calcSize, calcSize);
+    private static void squareDraw(int size, String[] colors, Graphics graphics){
+        for (int i = 0; i < colors.length; i++){
+            int calcSize = 200 - i*20;
+            graphics.setColor(Color.decode(colors[i]));
+            graphics.fillRect((WIDTH / 2) - (calcSize / 2), (HEIGHT / 2) - (calcSize / 2), calcSize, calcSize);
+        }
     }
 
     // Don't touch the code below
