@@ -4,29 +4,16 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class LinePlay {
+public class Triangles {
     public static void mainDraw(Graphics graphics) {
 
-
-        String green = "#3bd549";
-        String purple = "#b145f3";
-        int increment = 20;
-
-        for (int x = 0; x < WIDTH; x+=increment){
-            for (int y = 0; y < WIDTH; y+=increment){
-                if (x > 2*increment && y == 0) {
-                    graphics.setColor(Color.decode(purple));
-                    graphics.drawLine(x, y, WIDTH, x - 2*increment);
-                } else if(y > 2*increment && x == 0){
-                    graphics.setColor(Color.decode(green));
-                    graphics.drawLine(x, y, y - 2*increment, WIDTH);
-                }
-            }
-        }
-
+        drawTriangle(WIDTH / 2, 20, graphics);
     }
 
-    public static void drawLinePlay (int minVert, int maxVert, int minHor, int maxHor, Graphics graphics){
+    private static void drawTriangle(int startingPoint, int lineLength, Graphics graphics){
+        int[] xPoints = {startingPoint, startingPoint - lineLength/2,  startingPoint + lineLength/2};
+        int[] yPoints = {0, lineLength, lineLength};
+        graphics.drawPolygon(xPoints, yPoints, 3);
     }
 
     // Don't touch the code below
