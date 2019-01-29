@@ -9,15 +9,17 @@ public class PurpleSteps3d {
         // Reproduce this:
         // [https://github.com/green-fox-academy/teaching-materials/blob/master/workshop/drawing/purple-steps-3d/r4.png]
 
-        drawPurpleSteps(10, 6, graphics);
+        drawPurpleSteps(5, 10, graphics);
     }
 
-    private static void drawPurpleSteps(int size, int times, Graphics graphics){
-        for (int i = 1, startingPoint = 10; i <= times; startingPoint+=size*i, i++){
+    private static void drawPurpleSteps(int size, int repetitions, Graphics graphics){
+        int startX = size;
+        for (int i = 1; i <= repetitions; i++){
             graphics.setColor(Color.decode("#b145f3"));
-            graphics.fillRect(startingPoint, startingPoint, size*i, size*i);
+            graphics.fillRect(startX, startX, size*i, size*i);
             graphics.setColor(Color.BLACK);
-            graphics.drawRect(startingPoint, startingPoint, size*i, size*i);
+            graphics.drawRect(startX, startX, size*i, size*i);
+            startX+=size*i;
         }
     }
 
