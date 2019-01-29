@@ -8,7 +8,7 @@ public class Unique {
         //  Returns a list of numbers where every number in the list occurs only once
 
         //  Example
-            System.out.println(Arrays.toString(unique(new int[] {1, 11, 34, 11, 52, 61, 1, 34})));
+            System.out.println(Arrays.toString(unique(new int[] {1, 11, 34, 11, 52, 61, 1, 34, 34, 34, 4, 2, 4, 2})));
         //  should print: `[1, 11, 34, 52, 61]`
         //unique(new int[] {1, 11, 34, 11, 52, 61, 1, 34});
     }
@@ -21,6 +21,7 @@ public class Unique {
                 if (numArray[j] == numArray[i]){
                     nr[i]++;
                     numbersToExtract--;
+                    break;
                 }
             }
         }
