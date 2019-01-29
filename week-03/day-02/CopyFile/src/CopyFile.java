@@ -14,19 +14,18 @@ public class CopyFile {
 
     public static void main(String[] args) throws IOException {
 
-        Path pathToFile = Paths.get("my-txt-file.txt");
-        Files.write(pathToFile, Collections.singleton("alma\nkörte\nbarack\nszőlő\ndinnye"));
+        //Path pathToFile = Paths.get("my-txt-file.txt");
+        //Files.write(pathToFile, Collections.singleton("alma\nkörte\nbarack\nszőlő\ndinnye"));
         System.out.println(copyFiles("my-txt-file.txt", "copied-content-from-my-txt.txt"));
     }
 
     private static boolean copyFiles (String copyFrom, String copyTo){
 
         try {
-            List<String> lines = Files.readAllLines(Paths.get(copyFrom));
-            Files.write(Paths.get(copyTo), lines);
+            List<String> linesOfFirstFile = Files.readAllLines(Paths.get(copyFrom));
+            Files.write(Paths.get(copyTo), linesOfFirstFile);
             return true;
         } catch (IOException e){
-            System.out.println("valami");
             return false;
         }
     }
