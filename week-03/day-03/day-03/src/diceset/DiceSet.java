@@ -47,5 +47,13 @@ public class DiceSet {
         System.out.println(diceSet.getCurrent());
         diceSet.reroll(4);
         System.out.println(diceSet.getCurrent());
+
+        for (int currentDice = 0; currentDice < 6; currentDice++){
+            while (diceSet.getCurrent(currentDice) != 6) {
+                diceSet.reroll(currentDice);
+            }
+        }
+
+        System.out.println(diceSet.getCurrent());
     }
 }
