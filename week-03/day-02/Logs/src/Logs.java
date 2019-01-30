@@ -21,7 +21,7 @@ public class Logs {
         } catch (IOException e){
             System.err.println("Cannot read specified file: " + e.getMessage());
         }
-        
+
         System.out.println(getIpAddresses(logs));
         System.out.println(getPostRatio(logs));
     }
