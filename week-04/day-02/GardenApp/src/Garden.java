@@ -9,73 +9,49 @@ import java.util.List;
 
 public class Garden {
 
-    private List<Flower> flowerList;
-    private List<Tree> treeList;
+    private List<Plant> plantList;
 
     public Garden() {
-        this.flowerList = new ArrayList<>();
-        this.treeList = new ArrayList<>();
+        this.plantList = new ArrayList<>();
     }
 
     public void addPlantToGarden(Plant newPlant) {
         if (newPlant instanceof Flower) {
-            this.flowerList.add((Flower) newPlant);
+            this.plantList.add(0, newPlant);
         } else if (newPlant instanceof Tree) {
-            this.treeList.add((Tree) newPlant);
+            this.plantList.add(newPlant);
         }
     }
 
-    public void getFlowersInfo() {
-        for (Flower flower : flowerList) {
-            if (flower.needsWater()) {
-                System.out.println("The " + flower.getColor() + " Flower needs water.");
+    public void getPlantInfo() {
+        for (Plant plant : plantList) {
+            if (plant.needsWater()) {
+                System.out.println("The " + plant.getColor() + " " +
+                        plant.getClass().getSimpleName() +" needs water.");
             } else {
-                System.out.println("The " + flower.getColor() + " Flower doesn't need water.");
-            }
-        }
-    }
-
-    public void getTreesInfo() {
-        for (Tree tree: treeList) {
-            if (tree.needsWater()) {
-                System.out.println("The " + tree.getColor() + " Tree needs water.");
-            } else {
-                System.out.println("The " + tree.getColor() + " Tree doesn't need water.");
+                System.out.println("The " + plant.getColor() + " " +
+                        plant.getClass().getSimpleName() +" doesn't need water.");
             }
         }
     }
 
     public int thirstyPlants() {
-        int numberOfThirstyFlowers = 0;
-        int numberOfThirstyTrees = 0;
-        for (Flower flower : flowerList) {
-            if (flower.needsWater()) {
-                numberOfThirstyFlowers++;
+        int numberOfThirstyPlants = 0;
+        for (Plant plant : plantList) {
+            if (plant.needsWater()) {
+                numberOfThirstyPlants++;
             }
         }
-
-        for (Tree tree : treeList){
-            if (tree.needsWater()) {
-                numberOfThirstyTrees++;
-            }
-        }
-
-        return numberOfThirstyFlowers + numberOfThirstyTrees;
+        return numberOfThirstyPlants;
     }
 
     public void waterPlants(int inputWater){
         System.out.println("Watering with " + inputWater);
-        int amountOfWaterForPerPlant = inputWater / thirstyPlants();
+        int amountOfWaterPerPlant = inputWater / thirstyPlants();
 
-        for (Flower flower : flowerList) {
-            if (flower.needsWater()){
-                flower.absorbWater(amountOfWaterForPerPlant);
-            }
-        }
-
-        for (Tree tree : treeList) {
-            if (tree.needsWater()){
-                tree.absorbWater(amountOfWaterForPerPlant);
+        for (Plant plant : plantList) {
+            if (plant.needsWater()){
+                plant.absorbWater(amountOfWaterPerPlant);
             }
         }
     }

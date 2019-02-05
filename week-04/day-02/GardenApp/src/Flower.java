@@ -6,15 +6,9 @@
 
 public class Flower extends Plant {
 
-    private static final double WATER_ABSORPTION = 0.75;
-
     public Flower(String color) {
         super(color);
         this.minWaterLevel = 5;
-    }
-
-    @Override
-    public void absorbWater(int inputWaterAmount){
-        setCurrentWaterAmount(getCurrentWaterAmount() + inputWaterAmount * WATER_ABSORPTION);
+        this.waterAbsorption = 0.75;
     }
 }

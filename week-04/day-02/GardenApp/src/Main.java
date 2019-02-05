@@ -37,22 +37,19 @@ public class Main {
         Tree orangeTree = new Tree("orange");
 
         Garden garden = new Garden();
-        garden.addPlantToGarden(yellowFlower);
         garden.addPlantToGarden(blueFlower);
+        garden.addPlantToGarden(yellowFlower);
         garden.addPlantToGarden(purpleTree);
         garden.addPlantToGarden(orangeTree);
 
-        garden.getFlowersInfo();
-        garden.getTreesInfo();
+        garden.getPlantInfo();
         System.out.println();
 
         garden.waterPlants(40);
-        garden.getFlowersInfo();
-        garden.getTreesInfo();
+        garden.getPlantInfo();
         System.out.println();
 
         garden.waterPlants(70);
-        garden.getFlowersInfo();
-        garden.getTreesInfo();
+        garden.getPlantInfo();
     }
 }

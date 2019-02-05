@@ -3,11 +3,13 @@ public class Plant {
     double currentWaterAmount;
     String color;
     double minWaterLevel;
+    double waterAbsorption;
 
     public Plant(String color) {
         this.color = color;
         this.currentWaterAmount = 0;
         this.minWaterLevel = 2;
+        this.waterAbsorption = 0.1;
     }
 
     public boolean needsWater(){
@@ -18,8 +20,8 @@ public class Plant {
         }
     }
 
-    public void absorbWater(int inputWaterAmount) {
-        this.currentWaterAmount += inputWaterAmount;
+    public void absorbWater(int inputWaterAmount){
+        setCurrentWaterAmount(getCurrentWaterAmount() + inputWaterAmount * this.waterAbsorption);
     }
 
     public double getCurrentWaterAmount() {

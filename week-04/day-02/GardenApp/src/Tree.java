@@ -6,15 +6,9 @@
 
 public class Tree extends Plant {
 
-    private static final double WATER_ABSORPTION = 0.4;
-
     public Tree(String color) {
         super(color);
         this.minWaterLevel = 10;
-    }
-
-    @Override
-    public void absorbWater(int inputWaterAmount){
-        setCurrentWaterAmount(getCurrentWaterAmount() + inputWaterAmount * WATER_ABSORPTION);
+        this.waterAbsorption = 0.4;
     }
 }
