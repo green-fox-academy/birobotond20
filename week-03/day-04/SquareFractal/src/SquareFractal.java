@@ -10,12 +10,10 @@ public class SquareFractal {
 
     public static void mainDraw(Graphics graphics) {
 
-        graphics.setColor(Color.yellow);
+        graphics.setColor(Color.decode("#00313f"));
         graphics.fillRect(0, 0, WIDTH, HEIGHT);
         graphics.setColor(Color.BLACK);
         graphics.drawRect(0, 0, WIDTH, HEIGHT);
-        int divideCanvasBy = 3;
-        int thirdOfWidth = WIDTH / divideCanvasBy;
 
         drawSquareFractal(0, 0, WIDTH, graphics);
     }
