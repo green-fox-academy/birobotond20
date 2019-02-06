@@ -30,6 +30,14 @@ public class Student extends Person {
         this.skippedDays = 0;
     }
 
+    /*public Student(Student student){
+        this.name = student.name;
+        this.age = student.age;
+        this.gender = student.gender;
+        this.previousOrganization = student.previousOrganization;
+        this.skippedDays = student.skippedDays;
+    }*/
+
     public Student(String name, int age, String gender, String previousOrganization) {
         super(name, age, gender);
         this.previousOrganization = previousOrganization;
@@ -58,18 +66,7 @@ public class Student extends Person {
     }
 
     @Override
-    public String toString() {
-        return "Student{" +
-                "previousOrganization='" + previousOrganization + '\'' +
-                ", skippedDays=" + skippedDays +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", gender='" + gender + '\'' +
-                '}';
-    }
-
-    @Override
     public Object clone(){
-        return this;
+        return new Student(this.name, this.age, this.gender, this.previousOrganization);
     }
 }

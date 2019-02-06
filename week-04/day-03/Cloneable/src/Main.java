@@ -7,5 +7,9 @@ public class Main {
 
         System.out.println(student.hashCode());
         System.out.println(johnTheClone.hashCode());
+        student.name = "Valaki";
+
+        student.introduce();
+        johnTheClone.introduce();
     }
 }
