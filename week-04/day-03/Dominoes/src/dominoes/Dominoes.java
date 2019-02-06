@@ -8,7 +8,7 @@ import java.util.List;
 public class Dominoes {
     public static void main(String[] args) {
         List<dominoes.Domino> dominoes = initializeDominoes();
-        
+
         Collections.sort(dominoes);
         System.out.println(dominoes);
     }
