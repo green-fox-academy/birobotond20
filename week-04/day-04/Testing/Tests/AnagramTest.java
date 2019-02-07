@@ -14,8 +14,32 @@ public class AnagramTest {
     // void sum_SimpleValues_Calculated ()
 
     @Test
-    public void areAnagrams_SimpleStrings_ReturnsCorrectValue(){
+    public void areAnagrams_SimpleStrings_ReturnsTrue(){
         Anagram anagram = new Anagram();
-        assertTrue(anagram.areAnagrams("s4pI ll", "Llis p4"));
+        assertTrue(anagram.areAnagrams("listen", "silent"));
+    }
+
+    @Test
+    public void areAnagrams_UpperAndLowerCaseChars_ReturnsTrue(){
+        Anagram anagram = new Anagram();
+        assertTrue(anagram.areAnagrams("Listen", "silEnt"));
+    }
+
+    @Test
+    public void areAnagrams_StringWithWhitespace_ReturnsTrue(){
+        Anagram anagram = new Anagram();
+        assertTrue(anagram.areAnagrams("lis ten", "s ilent"));
+    }
+
+    @Test
+    public void areAnagrams_StringWithNumbers_ReturnsTrue(){
+        Anagram anagram = new Anagram();
+        assertTrue(anagram.areAnagrams("list3n", "sil3nt"));
+    }
+
+    @Test
+    public void areAnagrams_SimpleStrings_ReturnsFalse(){
+        Anagram anagram = new Anagram();
+        assertFalse(anagram.areAnagrams("listend", "silent"));
     }
 }
