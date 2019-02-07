@@ -28,7 +28,7 @@ public class AnagramTest {
     @Test
     public void areAnagrams_StringWithWhitespace_ReturnsTrue(){
         Anagram anagram = new Anagram();
-        assertTrue(anagram.areAnagrams("lis ten", "s ilent"));
+        assertTrue(anagram.areAnagrams("lis ten", " silent"));
     }
 
     @Test
@@ -41,5 +41,11 @@ public class AnagramTest {
     public void areAnagrams_SimpleStrings_ReturnsFalse(){
         Anagram anagram = new Anagram();
         assertFalse(anagram.areAnagrams("listend", "silent"));
+    }
+
+    @Test
+    public void areAnagrams_NullValues_ReturnsFalse(){
+        Anagram anagram = new Anagram();
+        anagram.areAnagrams(null, "nfkasnfsalk");
     }
 }
