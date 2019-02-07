@@ -25,3 +25,6 @@
 
 
 *.txt
+
+# Kotlin module
+*.kotlin_module
