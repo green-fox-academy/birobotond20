@@ -28,3 +28,8 @@
 
 # Kotlin module
 *.kotlin_module
+
+### Gradle Files###
+*.gradle
+*.jar
+*.properties
