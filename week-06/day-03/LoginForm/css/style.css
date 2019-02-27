@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+
+body {
+    background-color: #cccccc;
+    margin: auto;
+    font-family: 'Open Sans Condensed'
+}
+
+#login {
+    background-color: white;
+    margin: auto;
+    margin-top: 5em;
+    width: 25%;
+    padding: 50px;
+}
+
+#login-text {
+    font-size: 2em;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+label, input{
+    display: block;
+}
+
+label, button{
+    margin-top: 2em;
+}
+
+label {
+    text-transform: uppercase;
+}
+
+input {
+    margin: auto;
+    margin-top: 0.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    height: 3em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type="password"]{
+    background: url('../assets/baseline_visibility_black_48dp.png') no-repeat;
+    background-position: right;
+    background-size: 1em;
+}
+
+#forgot-password {
+    display: block;
+    text-align: right;
+}
+
+button {
+    background-color: #333333;
+    border-radius: 100px;
+    border: none;
+    padding: 15px 45px;
+    color: white;
+}
