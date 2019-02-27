@@ -60,3 +60,7 @@ button {
     padding: 15px 45px;
     color: white;
 }
+
+button:hover {
+    background-color: gray;
+}
