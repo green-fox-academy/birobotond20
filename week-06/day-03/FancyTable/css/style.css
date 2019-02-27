@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+
+body {
+    background-color: #3e94ec;
+    margin: auto;
+    font-family: 'Open Sans Condensed'
+}
+
+#page.content {
+    width: 1000px;
+}
+
+table {
+    width: 50%;
+    margin: auto;
+    margin-top: 2em;
+    background-color: transparent;
+    border-collapse: collapse;
+    border: transparent;
+    border-radius: 3px;
+}
+
+thead, tbody {
+    color: grey;
+    background-color: transparent;
+}
+
+tbody {
+    border-top: 3px solid grey;
+    border-radius: 3px;
+}
+
+th {
+    background: black;
+}
+
+th, td {
+    text-align: left;
+    width: 50%;
+    padding: 1em 0.5em 1em 0.5em;
+    border-bottom: 1px solid grey;
+}
+
+td:nth-child(2)::before {content: '$';}
+
+tbody > tr:nth-child(odd) {
+    background-color: lightgrey;
+}
+
+tr:nth-child(even) {
+    background-color: white;
+}
+
+th:first-child {
+    border-right: 1px solid grey;
+    border-radius: 3px 0 0 0;
+}
+
+th:nth-child(2) {
+    border-radius: 0 3px 0 0;
+}
+
+td:first-child {
+    border-right: 1px solid grey;
+}
+
+tr:last-child > td:first-child {
+    border-bottom: transparent;
+    border-radius: 0 0 0 3px;
+}
+
+tr:last-child > td:last-child {
+    border-bottom: transparent;
+    border-radius: 0 0 3px 0;
+}
