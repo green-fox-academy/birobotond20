@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/style/style.css" />
+    <title>Basic Webshop</title>
+</head>
+<body>
+    <div id="page">
+        <div id="header">
+            <p id="header-title">My Shop</p>
+            <nav id="nav-bar">
+                <ul>
+                    <li class="button"><a href="/only-available">Only available</a></li>
+                    <li class="button"><a href="/cheapest-first">Cheapest first</a></li>
+                    <li class="button"><a href="/contains-nike">Contains nike</a></li>
+                    <li class="button"><a href="/average-stock">Average Stock</a></li>
+                    <li class="button"><a href="/most-expensive">Most expensive available</a></li>
+                </ul>
+            </nav>
+
+            <label for="searchBar" class="searchLabel">Search for:</label>
+            <form class="searchForm" method="post" action="/search">
+                <input type="text" name="searchBar" placeholder="Search..." id="searchBar">
+                <button type="submit" class="searchButton button">Search</button>
+            </form>
+
+            <p id="single-item" th:text="${singleItem}"></p>
+
+        </div>
+    </div>
+</body>
+</html>
