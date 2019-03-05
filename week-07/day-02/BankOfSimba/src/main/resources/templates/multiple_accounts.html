@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" href="/style/style.css"/>
+    <link rel="stylesheet" href="/style.css"/>
     <title>Basic Webshop</title>
 </head>
 <body>
@@ -15,6 +15,8 @@
                 <th>Balance</th>
                 <th>Animal type</th>
                 <th>Index in list</th>
+                <th>Is king</th>
+                <th>Good or bad guy?</th>
             </tr>
             </thead>
             <tbody>
@@ -24,6 +26,15 @@
                     <td th:text="${bankAccount.balance}">Balance</td>
                     <td th:text="${bankAccount.animalType}">Account holder's animal type</td>
                     <td th:text="${bankAccountStat.index}">Index in list</td>
+                    <!--<td th:text="${bankAccount.getKingStatus()} ? 'King' : ''">King or not</td>-->
+                    <!-- OR -->
+                    <td>
+                        <span th:if="${bankAccount.getKingStatus()}">King</span>
+                    </td>
+                    <td th:switch="${bankAccount.getGoodCharacterStatus()}">
+                        <span th:case="true">Good guy</span>
+                        <span th:case="false">Bad guy</span>
+                    </td>
                 </tr>
             </th:block>
             </tbody>
