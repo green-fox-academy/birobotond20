@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>HTMLception</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="utf-8" />
+</head>
+<body>
+<div id="page">
+    <div id="page-body">
+        This is an <span th:text="${emphasized_text}"></span> text. <span class th:text="${bold_text}"></span><br/>
+        This is an <span th:utext="${emphasized_text}"></span> text. <span class th:utext="${bold_text}"></span>
+    </div>
+</div>
+</body>
+</html>
