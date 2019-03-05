@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class BankAccountController {
 
-    private BankAccount simbaBankAccount = new BankAccount("Simba", 2000, "lion");
+    private BankAccount simbaBankAccount = new BankAccount("Simba", 2000, "lion", true, true);
 
     @GetMapping("/show")
     public String showAccount(Model model){
