@@ -3,7 +3,6 @@ package com.greenfoxacademy.basicwebshop.controllers;
 import com.greenfoxacademy.basicwebshop.models.ShopItem;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +15,7 @@ import java.util.stream.Collectors;
 @Controller
 public class WebShopController {
 
-    List<ShopItem> shopItemList = new ArrayList<>();
+    private List<ShopItem> shopItemList = new ArrayList<>();
 
     public WebShopController() {
         this.shopItemList.add(new ShopItem("Running shoes","Nike running shoes for everyday sport", 15000, 5));
@@ -79,7 +78,7 @@ public class WebShopController {
     }
 
     @RequestMapping(value = "/search", method= RequestMethod.POST)
-    public String search(Model model, @RequestParam("searchBar") String keyword) {
+    public String search(Model model, @RequestParam("keyword") String keyword) {
 
         List<ShopItem> matchingItemsList = shopItemList.stream()
                 .filter(i -> i.getName().toLowerCase().contains(keyword.toLowerCase()) ||

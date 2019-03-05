@@ -15,7 +15,7 @@ public class BasicwebshopApplication {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/")
+    @RequestMapping("/")
     public String helloWorld() {
         return "Hello World!";
     }
