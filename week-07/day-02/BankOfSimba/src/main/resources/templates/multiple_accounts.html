@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/style/style.css"/>
+    <title>Basic Webshop</title>
+</head>
+<body>
+<div id="page">
+    <div id="pageBody">
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Balance</th>
+                <th>Animal type</th>
+                <th>Index in list</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="bankAccount : ${bankAccounts}">
+                <tr>
+                    <td th:text="${bankAccount.name}">Account holder name</td>
+                    <td th:text="${bankAccount.balance}">Balance</td>
+                    <td th:text="${bankAccount.animalType}">Account holder's animal type</td>
+                    <td th:text="${bankAccountStat.index}">Index in list</td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
