@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thymeleaf Exercise #</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div id="page">
+        <p th:text="${bankaccount.name}">Bank account holder name</p>
+        <p th:text="|${#numbers.formatDecimal(bankaccount.balance, 0, 2, 'POINT')} Zebra|">Bank account balance</p>
+        <p th:text="${bankaccount.animalType}"></p>
+    </div>
+</body>
+</html>
