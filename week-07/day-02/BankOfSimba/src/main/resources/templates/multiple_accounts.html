@@ -20,25 +20,32 @@
             </tr>
             </thead>
             <tbody>
-            <th:block th:each="bankAccount : ${bankAccounts}">
-                <tr>
-                    <td th:text="${bankAccount.name}">Account holder name</td>
-                    <td th:text="${bankAccount.balance}">Balance</td>
-                    <td th:text="${bankAccount.animalType}">Account holder's animal type</td>
-                    <td th:text="${bankAccountStat.index}">Index in list</td>
-                    <!--<td th:text="${bankAccount.getKingStatus()} ? 'King' : ''">King or not</td>-->
-                    <!-- OR -->
-                    <td>
-                        <span th:if="${bankAccount.getKingStatus()}">King</span>
-                    </td>
-                    <td th:switch="${bankAccount.getGoodCharacterStatus()}">
-                        <span th:case="true">Good guy</span>
-                        <span th:case="false">Bad guy</span>
-                    </td>
-                </tr>
-            </th:block>
+                <th:block th:each="bankAccount : ${bankAccounts}">
+                    <tr th:class="${bankAccount.getKingStatus()} ? 'king'">
+                        <td th:text="${bankAccount.name}">Account holder name</td>
+                        <td th:text="${bankAccount.balance}">Balance</td>
+                        <td th:text="${bankAccount.animalType}">Account holder's animal type</td>
+                        <td th:text="${bankAccountStat.index}">Index in list</td>
+                        <!--<td th:text="${bankAccount.getKingStatus()} ? 'King' : ''">King or not</td>-->
+                        <!-- OR -->
+                        <td>
+                            <span th:if="${bankAccount.getKingStatus()}">King</span>
+                        </td>
+                        <td th:text="${bankAccount.getGoodCharacterStatus()} ? 'Good guy' : 'Bad guy'"></td>
+                    </tr>
+                </th:block>
             </tbody>
         </table>
+
+        <form action="#" th:action="@{/raise}" th:method="post">
+            <label for="account-select">Choose animal to raise balance for:</label>
+            <select id="account-select" th:name="index">
+                <option th:each="bankAccount:${bankAccounts}"
+                        th:text="${bankAccount.name}"
+                        th:value="${bankAccountStat.index}"></option>
+            </select>
+            <button type="submit">Raise</button>
+        </form>
     </div>
 </div>
 </body>

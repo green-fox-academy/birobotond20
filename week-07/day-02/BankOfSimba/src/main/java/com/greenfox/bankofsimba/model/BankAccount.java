@@ -28,8 +28,12 @@ public class BankAccount {
         return balance;
     }
 
-    public void setBalance(int balance) {
-        this.balance = balance;
+    public void setBalance() {
+        if (this.getKingStatus()){
+            this.balance += 100;
+        } else {
+            this.balance += 10;
+        }
     }
 
     public String getAnimalType() {
