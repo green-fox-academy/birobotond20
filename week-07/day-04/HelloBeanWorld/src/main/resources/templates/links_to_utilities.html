@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Links to utilities</title>
+</head>
+<body>
+<div id="page">
+    <div id="body">
+        <ul th:each="color:${listOfColors}">
+            <li><a th:text="${color}" th:href="@{'/' + ${color}}"></a></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
