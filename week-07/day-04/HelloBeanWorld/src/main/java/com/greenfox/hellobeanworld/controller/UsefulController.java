@@ -21,4 +21,10 @@ public class UsefulController {
         model.addAttribute("listOfColors", this.utilities.getColorList());
         return "links_to_utilities";
     }
+
+    @GetMapping("/useful/colored")
+    public String setRandomBackgroundColor(Model model){
+        model.addAttribute("color", this.utilities);
+        return "random_background";
+    }
 }
