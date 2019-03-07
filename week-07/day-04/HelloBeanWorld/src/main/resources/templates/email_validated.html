@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Email validated</title>
+</head>
+<body>
+<div id="body">
+    <div id="email-section">
+        <form action="#" th:action="@{/useful/email}" th:method="post">
+            <label for="emailInput">
+                <input type="text" name="email" placeholder="e-mail" id="emailInput">
+            </label>
+            <button type="submit">Send</button>
+        </form>
+        <p th:style="${isValid} ? 'color: green' : 'color: red'"
+            th:text="${emailAddress}">Hello</p>
+    </div>
+</div>
+</body>
+</html>

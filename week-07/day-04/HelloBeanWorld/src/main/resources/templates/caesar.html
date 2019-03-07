@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Caesar encode</title>
+</head>
+<body>
+<div id="page">
+    <div id="body">
+        <form action="#" th:action="@{/encode}" th:method="post">
+            <input type="text" name="text" placeholder="Enter encode text here">
+            <input type="text" name="number" placeholder="Number of shifts">
+            <button type="submit">Submit</button>
+        </form>
+
+        <form action="#" th:action="@{/decode}" th:method="post">
+            <input type="text" name="text" placeholder="Enter decode text here">
+            <input type="text" name="number" placeholder="Number of shifts">
+            <button type="submit">Submit</button>
+        </form>
+
+        <p th:text="${returnedText}"></p>
+    </div>
+</div>
+</body>
+</html>
