@@ -26,8 +26,6 @@
                         <td th:text="${bankAccount.balance}">Balance</td>
                         <td th:text="${bankAccount.animalType}">Account holder's animal type</td>
                         <td th:text="${bankAccountStat.index}">Index in list</td>
-                        <!--<td th:text="${bankAccount.getKingStatus()} ? 'King' : ''">King or not</td>-->
-                        <!-- OR -->
                         <td>
                             <span th:if="${bankAccount.getKingStatus()}">King</span>
                         </td>

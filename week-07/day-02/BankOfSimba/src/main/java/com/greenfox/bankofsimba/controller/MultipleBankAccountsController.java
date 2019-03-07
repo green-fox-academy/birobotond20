@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
@@ -32,7 +31,7 @@ public class MultipleBankAccountsController {
     }
 
     @PostMapping("/raise")
-    public String raiseAccountBalance(Model model, @RequestParam("index") Integer index){
+    public String raiseAccountBalance(Model model, @RequestParam("index") Integer index) {
         this.bankAccounts.get(index).setBalance();
         model.addAttribute("bankAccounts", this.bankAccounts);
         return "multiple_accounts";
