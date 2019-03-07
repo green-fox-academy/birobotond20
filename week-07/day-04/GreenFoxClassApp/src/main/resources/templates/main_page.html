@@ -3,13 +3,16 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/style/style.css">
     <title>Main page</title>
 </head>
 <body>
 <div id="page">
-    <div id="body">
+    <div id="page-body">
+        <p th:text="|Student count: ${numberOfStudents}|"></p>
         <ul>
             <li><a th:href="@{/gfa/list}">List student</a></li>
+            <li><a th:href="@{/gfa/add}">Add new student</a></li>
         </ul>
     </div>
 </div>
