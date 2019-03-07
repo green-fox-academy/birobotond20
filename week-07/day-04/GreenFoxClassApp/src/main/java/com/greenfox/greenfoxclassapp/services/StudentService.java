@@ -30,4 +30,8 @@ public class StudentService {
     public int countStudents(){
         return this.names.size();
     }
+
+    public boolean isPresent(String name){
+        return this.names.contains(name);
+    }
 }

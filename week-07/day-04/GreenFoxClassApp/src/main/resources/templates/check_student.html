@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/style/style.css">
-    <title>List of student</title>
+    <title>Check student</title>
 </head>
 <body>
 <div id="page">
@@ -14,11 +14,13 @@
             <li th:each="student : ${studentlist}"
                 th:text="${student}"></li>
         </ul>
-
-        <form action="#" th:action="@{/gfa/add}" th:method="get">
+        <form action="#" th:action="@{/gfa/check}" th:method="get">
             <input type="text" name="name" placeholder="Name">
-            <button type="submit">Add student</button>
+            <button type="submit">Check student</button>
         </form>
+
+        <p th:text="${isPresent} ? 'Student already in the databasse' : 'Student not in the database'"
+        th:style="${isPresent} ? 'color: green' : 'color: red'"></p>
     </div>
 </div>
 </body>

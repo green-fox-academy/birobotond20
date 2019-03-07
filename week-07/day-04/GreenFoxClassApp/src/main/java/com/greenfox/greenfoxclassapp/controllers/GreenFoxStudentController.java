@@ -38,4 +38,13 @@ public class GreenFoxStudentController {
         model.addAttribute("studentlist", this.studentService.findAll());
         return "student_list";
     }
+
+    @GetMapping("/gfa/check")
+    public String checkStudent(Model model, @RequestParam(value = "name", required = false) String student){
+        if (student != null){
+            model.addAttribute("isPresent", this.studentService.isPresent(student));
+        }
+        model.addAttribute("studentlist", this.studentService.findAll());
+        return "check_student";
+    }
 }
