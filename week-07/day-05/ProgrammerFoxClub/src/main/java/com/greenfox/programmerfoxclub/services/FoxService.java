@@ -2,10 +2,12 @@ package com.greenfox.programmerfoxclub.services;
 
 import com.greenfox.programmerfoxclub.models.Fox;
 import com.greenfox.programmerfoxclub.models.Gender;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class FoxService {
 
     List<Fox> foxes;
@@ -40,5 +42,14 @@ public class FoxService {
 
     public void addFox(Fox newFox){
         this.foxes.add(newFox);
+    }
+
+    public boolean isExistent(String newFox){
+        for (Fox fox : this.foxes) {
+            if (fox.getName().equals(newFox)){
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -1,5 +1,8 @@
 package com.greenfox.programmerfoxclub.controllers;
 
+import com.greenfox.programmerfoxclub.models.Fox;
+import com.greenfox.programmerfoxclub.services.FoxService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +11,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
+
+    private FoxService foxService;
+
+    @Autowired
+    public MainController(FoxService foxService) {
+        this.foxService = foxService;
+    }
 
     @GetMapping("/")
     public String loadMain(Model model, @RequestParam(value = "name", required = false, defaultValue = "Mr. Fox") String name) {
@@ -32,7 +42,10 @@ public class MainController {
 
     // Do not touch this code, it just happens to work
     @PostMapping("/login")
-    public String getLoginName(String name) {
+    public String getLoginName(Model model, String name) {
+        if (!this.foxService.isExistent(name)){
+            return "/login";
+        }
         return "redirect:/?name=" + name;
     }
 }
