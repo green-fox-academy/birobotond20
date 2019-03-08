@@ -31,8 +31,8 @@ public class FoxService {
                     add("teach");
                     add("ride a bike");
                 }},
-                "pasta",
-                "pu-erh tea"
+                "pizza",
+                "Club Mate"
         ));
     }
 

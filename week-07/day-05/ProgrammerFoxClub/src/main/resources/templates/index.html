@@ -14,15 +14,19 @@
             <li><a th:href="@{/login}">Login</a></li>
         </ul>
         <img src="/images/greenfox.png" alt="Image of a green fox"/>
-        <p th:text="'This is ' + ${fox.name} + '. Currently living on' + ${fox.favouriteFood} + ' and '
-        + ${fox.favouriteDrink} + '. He knows ' + ${fox.getListOfTricks().size()} + ' tricks.'"></p>
+
+        <p th:if="${fox} != null" th:text="'This is Mr. ' + ${fox.name} + '. Currently living on ' + ${fox.favouriteFood} + ' and '
+        + ${fox.favouriteDrink} + '. He knows ' + ${fox.getNumberOfTricks()} + ' tricks.'"></p>
 
         <h1>Known tricks</h1>
 
-        <ul>
-            <li>write HTML</li>
-            <li>code in Java</li>
+        <ul th:if="${fox.getNumberOfTricks() != 0}">
+            <li th:each="trick: ${fox.getListOfTricks()}"
+                th:text="${trick.toString()}"></li>
         </ul>
+
+        <p th:if="${fox.getNumberOfTricks() == 0}"
+            th:text="'You know no tricks yet. Go and learn some'"></p>
     </div>
 </div>
 </body>

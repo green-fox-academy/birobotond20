@@ -15,7 +15,7 @@ public class Fox {
         this.gender = Gender.FEMALE;
         this.listOfTricks = null;
         this.favouriteFood = "chicken";
-        this.favouriteDrink = "Water";
+        this.favouriteDrink = "water";
     }
 
     public Fox(String name, Gender gender, List<String> listOfTricks, String favouriteFood, String favouriteDrink) {
@@ -34,8 +34,23 @@ public class Fox {
         this.name = name;
     }
 
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
     public List<String> getListOfTricks() {
-        return listOfTricks;
+        return this.listOfTricks;
+    }
+
+    public int getNumberOfTricks(){
+        if (this.listOfTricks == null){
+            return 0;
+        }
+        return this.listOfTricks.size();
     }
 
     public void setListOfTricks(List<String> listOfTricks) {
