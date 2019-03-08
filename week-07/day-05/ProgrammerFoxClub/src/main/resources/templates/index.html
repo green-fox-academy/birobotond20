@@ -15,7 +15,7 @@
         </ul>
         <img src="/images/greenfox.png" alt="Image of a green fox"/>
 
-        <p th:if="${fox} != null" th:text="'This is Mr. ' + ${fox.name} + '. Currently living on ' + ${fox.favouriteFood} + ' and '
+        <p th:if="${fox} != null" th:text="'This is ' + ${fox.name} + '. Currently living on ' + ${fox.favouriteFood} + ' and '
         + ${fox.favouriteDrink} + '. He knows ' + ${fox.getNumberOfTricks()} + ' tricks.'"></p>
 
         <h1>Known tricks</h1>
