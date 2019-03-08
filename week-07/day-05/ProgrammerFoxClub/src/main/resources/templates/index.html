@@ -8,16 +8,12 @@
 </head>
 <body>
 <div id="page">
-    <div id="page-header">
-        <nav>
-            <ul>
-                <li><a href="#">Information</a></li>
-            </ul>
-        </nav>
-    </div>
     <div id="page-body">
-        <img src="/images/greenfox.png"/>
-        <p>This is Mr. Fox. Currently living on pizza and lemonade. He knows 2 trick.</p>
+        <ul>
+            <li><a href="#">Information</a></li>
+        </ul>
+        <img src="/images/greenfox.png" alt="Image of a green fox"/>
+        <p th:text="'This is ' + ${name} + '. Currently living on pizza and lemonade. He knows 2 trick.'"></p>
 
         <h1>Known tricks</h1>
         <ul>
