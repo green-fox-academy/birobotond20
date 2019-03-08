@@ -24,7 +24,7 @@ public class FoxService {
                 "pasta",
                 "pu-erh tea"
                 ));
-        this.foxes.add(new Fox("Sári",
+        this.foxes.add(new Fox("Sari",
                 Gender.FEMALE,
                 new ArrayList<String>(){{
                     add("code in python");
@@ -51,5 +51,15 @@ public class FoxService {
             }
         }
         return false;
+    }
+
+    public Fox getFoxWithName(String name){
+        int index = 0;
+        for (int i = 0; i < foxes.size(); i++) {
+            if(foxes.get(i).getName().equals(name)){
+                index = i;
+            }
+        }
+        return foxes.get(index);
     }
 }

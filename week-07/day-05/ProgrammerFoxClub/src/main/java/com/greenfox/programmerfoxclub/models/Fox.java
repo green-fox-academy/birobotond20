@@ -10,6 +10,14 @@ public class Fox {
     String favouriteFood;
     String favouriteDrink;
 
+    public Fox(String name){
+        this.name = name;
+        this.gender = Gender.FEMALE;
+        this.listOfTricks = null;
+        this.favouriteFood = "chicken";
+        this.favouriteDrink = "Water";
+    }
+
     public Fox(String name, Gender gender, List<String> listOfTricks, String favouriteFood, String favouriteDrink) {
         this.name = name;
         this.gender = gender;

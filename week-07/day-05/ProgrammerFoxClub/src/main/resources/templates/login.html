@@ -17,6 +17,8 @@
                 <input type="text" name="name" placeholder="Name" id="nameInputField">
             <button type="submit">GO</button>
         </form>
+        <p th:style="${showText} ? 'color: transparent; visibility: hidden;' : 'color: red; visibility: visible;'"
+            th:text="'You have provided a name that has not been used before, add it as a new one!'"></p>
     </div>
 </div>
 </body>

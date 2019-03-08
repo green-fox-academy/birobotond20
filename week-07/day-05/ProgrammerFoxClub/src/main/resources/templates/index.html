@@ -11,11 +11,14 @@
     <div id="page-body">
         <ul>
             <li><a href="#">Information</a></li>
+            <li><a th:href="@{/login}">Login</a></li>
         </ul>
         <img src="/images/greenfox.png" alt="Image of a green fox"/>
-        <p th:text="'This is ' + ${name} + '. Currently living on pizza and lemonade. He knows 2 trick.'"></p>
+        <p th:text="'This is ' + ${fox.name} + '. Currently living on' + ${fox.favouriteFood} + ' and '
+        + ${fox.favouriteDrink} + '. He knows ' + ${fox.getListOfTricks().size()} + ' tricks.'"></p>
 
         <h1>Known tricks</h1>
+
         <ul>
             <li>write HTML</li>
             <li>code in Java</li>
