@@ -15,10 +15,12 @@ public class Todo {
     private boolean urgent;
     private boolean done;
 
-    public Todo(String title, boolean urgent, boolean done) {
+    public Todo(){}
+
+    public Todo(String title) {
         this.title = title;
-        this.urgent = urgent;
-        this.done = done;
+        this.urgent = false;
+        this.done = false;
     }
 
     public String getTitle() {
