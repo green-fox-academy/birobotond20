@@ -12,6 +12,7 @@
         <ul>
             <li><a href="#">Information</a></li>
             <li><a th:href="@{/login}">Login</a></li>
+            <li><a th:href="@{/nutritionStore}">Nutrition Store</a></li>
         </ul>
         <img src="/images/greenfox.png" alt="Image of a green fox"/>
 
@@ -21,7 +22,7 @@
         <h1>Known tricks</h1>
 
         <ul th:if="${fox.getNumberOfTricks() != 0}">
-            <li th:each="trick: ${fox.getListOfTricks()}"
+            <li th:each="trick : ${fox.getListOfTricks()}"
                 th:text="${trick.toString()}"></li>
         </ul>
 

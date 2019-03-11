@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
@@ -28,7 +29,6 @@ public class MainController {
         if (this.foxService.isExistent(name)){
             model.addAttribute("fox", this.foxService.getFoxWithName(name));
         } else if (name != null && !name.isEmpty()) {
-            this.foxService.addFox(new Fox(name));
             model.addAttribute("fox", new Fox(name));
         } else {
             model.addAttribute("fox", new Fox("Mr. Fox", Gender.MALE,
@@ -48,7 +48,20 @@ public class MainController {
     }
 
     @PostMapping("/login")
-    public String getLoginIndex(Model model, String name) {
+    public String getLoginIndex(String name) {
+        this.foxService.addFox(new Fox(name));
         return "redirect:/?name=" + name;
+    }
+
+    @GetMapping("/nutritionStore")
+    public String nutritionStore(Model model){
+        model.addAttribute("foxes", this.foxService.getFoxes());
+        return "nutrition_template";
+    }
+
+    @PostMapping("/nutritionStore/")
+    public String changeFoodDrink(Model model, String name){
+        model.addAttribute("fox", this.foxService.getFoxWithName(name));
+        return "change_fox_fb";
     }
 }
