@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Controller
@@ -51,6 +53,22 @@ public class TodoController {
     @GetMapping(value = "/{id}/delete")
     public String deleteTodo(@PathVariable long id){
         todoRepository.deleteById(id);
+        return "redirect:/todo/list";
+    }
+
+    @GetMapping(value = "/{id}/edit")
+    public String editTodoForm(Model model, @PathVariable long id){
+        model.addAttribute("todo", todoRepository.findById(id).orElseThrow(NullPointerException::new));
+        return "edit_todo";
+    }
+
+    @PostMapping(value="/{id}/edit")
+    public String editTodoSubmit(@PathVariable long id, Todo todo){
+        Todo updatedTodo = todoRepository.findById(id).get();
+        updatedTodo.setTitle(todo.getTitle());
+        updatedTodo.setDone(todo.isDone());
+        updatedTodo.setUrgent(todo.isUrgent());
+        todoRepository.save(updatedTodo);
         return "redirect:/todo/list";
     }
 }
