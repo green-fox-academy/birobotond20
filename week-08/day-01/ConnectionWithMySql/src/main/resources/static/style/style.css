@@ -1,0 +1,11 @@
+table, th {
+    border: 1px solid transparent;
+}
+
+td {
+    border: 1px solid gray;
+}
+
+input, button {
+    display: block;
+}

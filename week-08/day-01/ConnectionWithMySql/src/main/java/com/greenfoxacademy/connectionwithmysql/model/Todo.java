@@ -18,9 +18,21 @@ public class Todo {
     public Todo(){}
 
     public Todo(String title) {
+        System.out.println("title only");
         this.title = title;
         this.urgent = false;
         this.done = false;
+    }
+
+    public Todo(String title, boolean urgent, boolean done) {
+        System.out.println("all fields");
+        this.title = title;
+        this.urgent = urgent;
+        this.done = done;
+    }
+
+    public long getId(){
+        return this.id;
     }
 
     public String getTitle() {
