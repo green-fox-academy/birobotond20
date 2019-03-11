@@ -1,4 +1,4 @@
-package com.greenfoxacademy.listingtodos.model;
+package com.greenfoxacademy.connectionwithmysql.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
