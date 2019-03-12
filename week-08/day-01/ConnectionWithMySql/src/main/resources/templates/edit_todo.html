@@ -11,8 +11,14 @@
         <h1>Edit todo</h1>
         <form action="#" th:action="@{'/todo/' + ${todo.id} + '/edit'}" th:object="${todo}" th:method="post">
             <input type="text" th:value="*{title}" th:field="*{title}">
-            <input type="checkbox" th:checked="*{urgent}" th:value="*{urgent}" th:field="*{urgent}"/>
-            <input type="checkbox" th:checked="*{done}" th:value="*{done}" th:field="*{done}"/>
+            <label for="done">
+                Done:
+                <input id="done" type="checkbox" th:checked="*{done}" th:value="*{done}" th:field="*{done}"/>
+            </label>
+            <label for="urgent">
+                Urgent:
+                <input id="urgent" type="checkbox" th:checked="*{urgent}" th:value="*{urgent}" th:field="*{urgent}"/>
+            </label>
             <button th:text="Edit" type="submit"></button>
         </form>
     </div>
