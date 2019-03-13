@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nutrition Store</title>
+</head>
+<body>
+<div id="page">
+    <div id="page-header">
+        <ul>
+            <li><a href="#">Information</a></li>
+            <li><a th:href="@{/nutritionStore}">Nutrition Store</a></li>
+            <li><a th:href="@{/trickCenter}">Trick center</a></li>
+            <li><a th:href="@{/actionHistory}">Action history</a></li>
+        </ul>
+    </div>
+    <div id="page-body">
+        <form action="#" th:action="@{/nutritionStore}" th:method="post" th:object="${fox}">
+
+            <label for="selectFood">
+                Food
+                <select id="selectFood">
+                    <option th:text="pizza"
+                            th:value="pizza"></option>
+                    <option th:text="pasta"
+                            th:value="pasta"></option>
+                    <option th:text="sandwich"
+                            th:value="sandwich"></option>
+                    <option th:text="whip cream"
+                            th:value="whip cream"></option>
+                    <option th:text="artichoke"
+                            th:value="artichoke"></option>
+                </select>
+            </label>
+            <label for="selectDrink">
+                Food
+                <select id="selectDrink">
+                    <option th:text="Cola"
+                            th:value="Cola"></option>
+                    <option th:text="Water"
+                            th:value="Water"></option>
+                    <option th:text="Lemonade"
+                            th:value="Lemonade"></option>
+                    <option th:text="Wine"
+                            th:value="Wine"></option>
+                    <option th:text="Beer"
+                            th:value="Beer"></option>
+                </select>
+            </label>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
