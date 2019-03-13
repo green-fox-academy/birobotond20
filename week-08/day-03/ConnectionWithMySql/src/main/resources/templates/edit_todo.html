@@ -3,25 +3,39 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
     <title>Edit todo</title>
 </head>
 <body>
-<div id="page">
-    <div id="page-body">
-        <h1>Edit todo</h1>
-        <form action="#" th:action="@{'/todo/' + ${todo.id} + '/edit'}" th:object="${todo}" th:method="post">
-            <input type="text" th:value="*{title}" th:field="*{title}">
-            <label for="done">
-                Done:
-                <input id="done" type="checkbox" th:checked="*{done}" th:value="*{done}" th:field="*{done}"/>
-            </label>
-            <label for="urgent">
-                Urgent:
-                <input id="urgent" type="checkbox" th:checked="*{urgent}" th:value="*{urgent}" th:field="*{urgent}"/>
-            </label>
-            <button th:text="Edit" type="submit"></button>
-        </form>
+<div id="page" class="container-fluid">
+    <div id="page-body" class="row">
+        <div class="col-xs-12">
+            <h1>Edit todo</h1>
+            <form class="form-inline" action="#" th:action="@{'/todo/' + ${todo.id} + '/edit'}" th:object="${todo}" th:method="post">
+                <div class="form-group">
+                    <label for="todo-title">
+                        Title:
+                        <input type="text" th:value="*{title}" th:field="*{title}" id="todo-title" class="form-control">
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label for="done">
+                        Done:
+                        <input id="done" type="checkbox" th:checked="*{done}" th:value="*{done}" th:field="*{done}"/>
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label for="urgent">
+                        Urgent:
+                        <input id="urgent" type="checkbox" th:checked="*{urgent}" th:value="*{urgent}" th:field="*{urgent}"/>
+                    </label>
+                </div>
+                <button class="btn btn-primary" th:text="Edit" type="submit"></button>
+            </form>
+        </div>
     </div>
 </div>
+<script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
 </body>
 </html>

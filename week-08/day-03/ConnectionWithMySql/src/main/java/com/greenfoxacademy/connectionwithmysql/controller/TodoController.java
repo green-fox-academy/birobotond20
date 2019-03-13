@@ -24,6 +24,7 @@ public class TodoController {
 
     @GetMapping(value = {"", "/", "/list"})
     public String list(Model model, @RequestParam(value = "isActive", required = false) String isActive) {
+        model.addAttribute("todo", new Todo());
 
         if (isActive != null && isActive.equals("true")) {
             List<Todo> dontTodos = ((List<Todo>) todoRepository.findAll())
@@ -37,34 +38,30 @@ public class TodoController {
         return "todolist";
     }
 
-    @GetMapping(value = "/add")
-    public String addNewTodoForm(Model model) {
-        model.addAttribute("todo", new Todo());
-        return "add_new_todo";
-    }
-
     @PostMapping(value = "/add")
     public String addNewTodoSubmit(Todo todo) {
-        todoRepository.save(todo);
+        if (todo != null && !(todo.getTitle().isEmpty())) {
+            todoRepository.save(todo);
+        }
         return "redirect:/todo/list";
     }
 
     @GetMapping(value = "/{id}/delete")
-    public String deleteTodo(@PathVariable long id) {
+    public String deleteTodo(@PathVariable long id){
         todoRepository.deleteById(id);
         return "redirect:/todo/list";
     }
 
     @GetMapping(value = "/{id}/edit")
-    public String editTodoForm(Model model, @PathVariable long id) {
+    public String editTodoForm(Model model, @PathVariable long id){
         model.addAttribute("todo", todoRepository.findById(id).orElseThrow(NullPointerException::new));
         return "edit_todo";
     }
 
-    @PostMapping(value = "/{id}/edit")
-    public String editTodoSubmit(@PathVariable long id, Todo todo) {
+    @PostMapping(value="/{id}/edit")
+    public String editTodoSubmit(@PathVariable long id, Todo todo){
         Optional<Todo> optionalTodo = todoRepository.findById(id);
-        if (optionalTodo.isPresent()) {
+        if (optionalTodo.isPresent()){
             Todo updatedTodo = optionalTodo.get();
             updatedTodo.setTitle(todo.getTitle());
             updatedTodo.setDone(todo.isDone());

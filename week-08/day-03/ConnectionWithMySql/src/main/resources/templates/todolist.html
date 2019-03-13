@@ -3,35 +3,42 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link type="text/css" rel="stylesheet" href="/style/style.css"/>
+    <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
     <title>List of todos</title>
 </head>
 <body>
-<div id="page">
+<div class="container">
     <div id="page-body">
         <h1>Todos for today:</h1>
 
-        <p><a th:href="@{/todo/add}">Add new todo</a></p>
+        <p>Add new todo</p>
+        <form action="#" th:action="@{/todo/add}" th:object="${todo}" th:method="post">
+            <input type="text" th:field="*{title}">
+            <button type="submit">Add todo</button>
+        </form>
 
-        <table>
+        <table class="table table-striped table-hover">
             <thead>
-                <th>ID</th>
-                <th>ACTION</th>
-                <th>DONE</th>
-                <th>URGENT</th>
+            <th>ID</th>
+            <th>ACTION</th>
+            <th>DONE</th>
+            <th>URGENT</th>
             </thead>
             <tbody>
-                <tr th:each="todo : ${todos}">
-                    <td th:text="${todo.id}"></td>
-                    <td th:text="${todo.title}"></td>
-                    <td th:text="${todo.isDone()}"></td>
-                    <td th:text="${todo.isUrgent()}"></td>
-                    <td><a th:href="@{'/todo/' + ${todo.id} + '/delete'}" th:method="get">Delete</a></td>
-                    <td><a th:href="@{'/todo/' + ${todo.id} + '/edit'}" th:method="get">Edit</a></td>
-                </tr>
+            <tr th:each="todo : ${todos}">
+                <td th:text="${todo.id}"></td>
+                <td th:text="${todo.title}"
+                    th:style="${todo.isDone()} ? 'text-decoration: line-through'"></td>
+                <td th:text="${todo.isDone()}"></td>
+                <td th:text="${todo.isUrgent()}"></td>
+                <td><a th:href="@{'/todo/' + ${todo.id} + '/delete'}" th:method="get">Delete</a></td>
+                <td><a th:href="@{'/todo/' + ${todo.id} + '/edit'}" th:method="get">Edit</a></td>
+            </tr>
             </tbody>
         </table>
     </div>
 </div>
+<script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
 </body>
 </html>
