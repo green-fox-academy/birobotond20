@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="/style/style.css"/>
+    <title>List of todos</title>
+</head>
+<body>
+<div id="page">
+    <div id="page-body">
+        <h1>Todos for today:</h1>
+
+        <p><a th:href="@{/todo/add}">Add new todo</a></p>
+
+        <table>
+            <thead>
+                <th>ID</th>
+                <th>ACTION</th>
+                <th>DONE</th>
+                <th>URGENT</th>
+            </thead>
+            <tbody>
+                <tr th:each="todo : ${todos}">
+                    <td th:text="${todo.id}"></td>
+                    <td th:text="${todo.title}"></td>
+                    <td th:text="${todo.isDone()}"></td>
+                    <td th:text="${todo.isUrgent()}"></td>
+                    <td><a th:href="@{'/todo/' + ${todo.id} + '/delete'}" th:method="get">Delete</a></td>
+                    <td><a th:href="@{'/todo/' + ${todo.id} + '/edit'}" th:method="get">Edit</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
