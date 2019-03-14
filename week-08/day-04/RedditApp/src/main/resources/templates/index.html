@@ -32,6 +32,9 @@
                     </tr>
                 </tbody>
             </table>
+
+            <p th:each="page : ${pageNumbers}"
+                th:text="${page}"></p>
         </div>
     </div>
 </div>

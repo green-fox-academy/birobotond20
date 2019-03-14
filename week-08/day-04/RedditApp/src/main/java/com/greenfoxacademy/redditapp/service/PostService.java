@@ -53,4 +53,8 @@ public class PostService {
         Pageable pageable = PageRequest.of(pageNumber, 10);
         return this.postRepository.findAllByOrderByNumberOfVotesDesc(pageable);
     }
+
+    public int getNumberOfPosts(){
+        return (int)this.postRepository.count();
+    }
 }
