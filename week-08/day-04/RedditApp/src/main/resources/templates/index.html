@@ -24,6 +24,7 @@
                         <td id="upvote"><a th:href="@{'/' + ${post.id} + '/upvote'}" th:method="get">+</a></td>
                         <td id="downvote"><a th:href="'/' + ${post.id} + '/downvote'" th:method="get">-</a></td>
                         <td><a th:text="${post.title}" th:href="@{${post.url}}"></a></td>
+                        <td th:text="${post.datePostedOn}"></td>
                     </tr>
                 </tbody>
             </table>
