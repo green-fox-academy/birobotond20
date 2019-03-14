@@ -49,6 +49,6 @@ public class Post {
     }
 
     public void setNumberOfVotes(int numberOfVotes) {
-        this.numberOfVotes = numberOfVotes;
+        this.numberOfVotes += numberOfVotes;
     }
 }

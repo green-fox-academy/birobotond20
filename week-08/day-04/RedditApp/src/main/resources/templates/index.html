@@ -21,8 +21,8 @@
                 <tbody>
                     <tr th:each="post : ${posts}">
                         <td th:text="${post.numberOfVotes}">Votes</td>
-                        <td id="upvote"><a>+</a></td>
-                        <td id="downvote"><a>-</a></td>
+                        <td id="upvote"><a th:href="@{'/' + ${post.id} + '/upvote'}" th:method="get">+</a></td>
+                        <td id="downvote"><a th:href="'/' + ${post.id} + '/downvote'" th:method="get">-</a></td>
                         <td><a th:text="${post.title}" th:href="@{${post.url}}"></a></td>
                     </tr>
                 </tbody>

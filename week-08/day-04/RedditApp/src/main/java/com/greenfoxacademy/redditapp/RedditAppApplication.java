@@ -1,5 +1,6 @@
 package com.greenfoxacademy.redditapp;
 
+import com.greenfoxacademy.redditapp.model.Post;
 import com.greenfoxacademy.redditapp.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -22,5 +23,9 @@ public class RedditAppApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        this.postRepository.deleteAll();
+        this.postRepository.save(new Post("Google", "https://www.google.com"));
+        this.postRepository.save(new Post("Facebook", "https://www.facebook.com"));
+        this.postRepository.save(new Post("Green Fox Academy", "https://www.greenfoxacademy.com"));
     }
 }
