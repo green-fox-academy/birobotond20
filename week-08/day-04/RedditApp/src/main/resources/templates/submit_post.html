@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
+    <title>Title</title>
+</head>
+<body>
+<div id="page" class="container">
+    <div id="page-body">
+        <div id="list-of-posts">
+            <h1 class="text-center">Submit a new post</h1>
+
+            <form action="#" th:action="@{/add}" th:method="post" th:object="${newPost}" class="text-center">
+                <label for="text-field">
+                    Title:
+                    <input type="text" th:field="*{title}" id="text-field">
+                </label>
+                <label for="url-field">
+                    Url:
+                    <input type="text" th:field="*{url}" id="url-field">
+                </label>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+</body>
+</html>
