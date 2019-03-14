@@ -14,8 +14,6 @@
             <nav>
             <ul class="container" th:style="'list-style-type: none'">
                 <li><a th:href="@{/add}">Submit new post</a></li>
-                <li><a th:href="@{/listAll}">List All</a></li>
-                <li><a th:href="@{/orderPosts}">Order posts</a></li>
             </ul>
             </nav>
         </div>
@@ -27,8 +25,8 @@
                 <tbody>
                     <tr th:each="post : ${posts}">
                         <td th:text="${post.numberOfVotes}">Votes</td>
-                        <td id="upvote"><a th:href="@{'/' + ${post.id} + '/upvote'}" th:method="get">+</a></td>
-                        <td id="downvote"><a th:href="'/' + ${post.id} + '/downvote'" th:method="get">-</a></td>
+                        <td id="upVote"><a th:href="@{'/upVote/' + ${post.id}}" th:method="get">+</a></td>
+                        <td id="downVote"><a th:href="@{'/downVote/' + ${post.id}}" th:method="get">-</a></td>
                         <td><a th:text="${post.title}" th:href="@{${post.url}}"></a></td>
                         <td th:text="${post.datePostedOn}"></td>
                     </tr>

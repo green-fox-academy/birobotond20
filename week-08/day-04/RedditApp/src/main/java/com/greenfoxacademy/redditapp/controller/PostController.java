@@ -20,8 +20,13 @@ public class PostController {
     }
 
     @GetMapping(value = {"", "/"})
-    public String listPosts(Model model) {
-        model.addAttribute("posts", this.postService.getTenBestPosts());
+    public String list() {
+        return "redirect:/0/";
+    }
+
+    @GetMapping(value = "/{page}/")
+    public String listPosts(Model model, @PathVariable(name = "page") Integer page) {
+        model.addAttribute("posts", this.postService.getTenBestPosts(page));
         return "index";
     }
 
@@ -37,27 +42,15 @@ public class PostController {
         return "redirect:/";
     }
 
-    @GetMapping(value = "/{id}/upvote")
-    public String upvote(@PathVariable(name = "id") Long id) {
+    @GetMapping(value = "/upVote/{id}/")
+    public String upVote(@PathVariable(name = "id") Long id) {
         this.postService.upVote(id);
         return "redirect:/";
     }
 
-    @GetMapping(value = "/{id}/downvote")
-    public String downvote(@PathVariable(name = "id") Long id) {
+    @GetMapping(value = "/downVote/{id}/")
+    public String downVote(@PathVariable(name = "id") Long id) {
         this.postService.downVote(id);
         return "redirect:/";
-    }
-
-    @GetMapping(value = "listAll")
-    public String listAll(Model model) {
-        model.addAttribute("posts", this.postService.listAllPosts());
-        return "index";
-    }
-
-    @GetMapping(value = "orderPosts")
-    public String orderPosts(Model model) {
-        model.addAttribute("posts", this.postService.getPostsOrdered());
-        return "index";
     }
 }

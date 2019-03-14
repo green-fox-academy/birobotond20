@@ -3,11 +3,12 @@ package com.greenfoxacademy.redditapp.service;
 import com.greenfoxacademy.redditapp.model.Post;
 import com.greenfoxacademy.redditapp.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class PostService {
@@ -17,10 +18,6 @@ public class PostService {
     @Autowired
     public PostService(PostRepository postRepository) {
         this.postRepository = postRepository;
-    }
-
-    public List<Post> listAllPosts() {
-        return this.postRepository.findAll();
     }
 
     public void addNewPost(Post post) {
@@ -52,11 +49,8 @@ public class PostService {
         }
     }
 
-    public List<Post> getPostsOrdered() {
-        return (List<Post>) this.postRepository.getPostsOrdered();
-    }
-
-    public List<Post> getTenBestPosts() {
-        return ((List<Post>) this.postRepository.getPostsOrdered()).stream().limit(10).collect(Collectors.toList());
+    public List<Post> getTenBestPosts(int pageNumber) {
+        Pageable pageable = PageRequest.of(pageNumber, 10);
+        return this.postRepository.findAllByOrderByNumberOfVotesDesc(pageable);
     }
 }
