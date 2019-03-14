@@ -16,12 +16,14 @@ public class Post {
     private Date datePostedOn;
 
     public Post() {
+        this.datePostedOn = new Date();
+        this.numberOfVotes = (int) (1 + (Math.random() * 101));
     }
 
     public Post(String title, String url) {
         this.title = title;
         this.url = url;
-        this.numberOfVotes = 0;
+        this.numberOfVotes = (int) (1 + (Math.random() * 101));
         this.datePostedOn = new Date();
     }
 

@@ -21,7 +21,7 @@ public class PostController {
 
     @GetMapping(value = {"", "/"})
     public String listPosts(Model model) {
-        model.addAttribute("posts", this.postService.listAllPosts());
+        model.addAttribute("posts", this.postService.getTenBestPosts());
         return "index";
     }
 
@@ -47,5 +47,17 @@ public class PostController {
     public String downvote(@PathVariable(name = "id") Long id) {
         this.postService.downVote(id);
         return "redirect:/";
+    }
+
+    @GetMapping(value = "listAll")
+    public String listAll(Model model) {
+        model.addAttribute("posts", this.postService.listAllPosts());
+        return "index";
+    }
+
+    @GetMapping(value = "orderPosts")
+    public String orderPosts(Model model) {
+        model.addAttribute("posts", this.postService.getPostsOrdered());
+        return "index";
     }
 }

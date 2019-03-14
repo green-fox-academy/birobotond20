@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PostService {
@@ -18,36 +19,44 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    public List<Post> listAllPosts(){
-        return (List<Post>) this.postRepository.findAll();
+    public List<Post> listAllPosts() {
+        return this.postRepository.findAll();
     }
 
-    public void addNewPost(Post post){
+    public void addNewPost(Post post) {
         if (post != null && !post.getTitle().isEmpty()) {
-            if (post.getUrl().isEmpty()){
+            if (post.getUrl().isEmpty()) {
                 post.setUrl("https://www.google.com/search?q=" + post.getTitle());
             }
             this.postRepository.save(post);
         }
     }
 
-    public void upVote(long id){
+    public void upVote(long id) {
         Optional<Post> optionalPost = this.postRepository.findById(id);
-        if (optionalPost.isPresent()){
+        if (optionalPost.isPresent()) {
             Post post = optionalPost.get();
             post.setNumberOfVotes(1);
             this.postRepository.save(post);
         }
     }
 
-    public void downVote(long id){
+    public void downVote(long id) {
         Optional<Post> optionalPost = this.postRepository.findById(id);
-        if (optionalPost.isPresent()){
+        if (optionalPost.isPresent()) {
             Post post = optionalPost.get();
             if (post.getNumberOfVotes() > 0) {
                 post.setNumberOfVotes(-1);
             }
             this.postRepository.save(post);
         }
+    }
+
+    public List<Post> getPostsOrdered() {
+        return (List<Post>) this.postRepository.getPostsOrdered();
+    }
+
+    public List<Post> getTenBestPosts() {
+        return ((List<Post>) this.postRepository.getPostsOrdered()).stream().limit(10).collect(Collectors.toList());
     }
 }
