@@ -34,7 +34,7 @@
                 </tbody>
             </table>
 
-            <p><a class="page-number" th:each="page : ${#numbers.sequence(0, pageNumbers)}"
+            <p>Page: <a class="page-number" th:each="page : ${#numbers.sequence(0, pageNumbers)}"
                         th:text="${page} + 1"
                         th:href="@{'/' + ${page} + '/'}"></a></p>
         </div>
