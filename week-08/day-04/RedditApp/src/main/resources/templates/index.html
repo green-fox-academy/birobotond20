@@ -27,14 +27,14 @@
                         <td th:text="${post.numberOfVotes}">Votes</td>
                         <td id="upVote"><a th:href="@{'/upVote/' + ${post.id}}" th:method="get">+</a></td>
                         <td id="downVote"><a th:href="@{'/downVote/' + ${post.id}}" th:method="get">-</a></td>
-                        <td><a th:text="${post.title}" th:href="@{${post.url}}"></a></td>
+                        <td><a th:text="${post.title}" th:href="@{${post.url}}" target="_blank"></a></td>
                         <td th:text="${post.datePostedOn}"></td>
                     </tr>
                 </tbody>
             </table>
 
-            <p th:each="page : ${pageNumbers}"
-                th:text="${page}"></p>
+           <!-- <p th:each="page : ${pageNumbers}"
+                th:text="${page}"></p>-->
         </div>
     </div>
 </div>

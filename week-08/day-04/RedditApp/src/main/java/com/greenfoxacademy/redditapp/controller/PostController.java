@@ -43,15 +43,15 @@ public class PostController {
         return "redirect:/";
     }
 
-    @GetMapping(value = "/upVote/{id}/")
+    @GetMapping(value = "/upVote/{id}")
     public String upVote(@PathVariable(name = "id") Long id) {
         this.postService.upVote(id);
-        return "redirect:/";
+        return "redirect:/0/";
     }
 
-    @GetMapping(value = "/downVote/{id}/")
+    @GetMapping(value = "/downVote/{id}")
     public String downVote(@PathVariable(name = "id") Long id) {
         this.postService.downVote(id);
-        return "redirect:/";
+        return "redirect:/0/";
     }
 }
