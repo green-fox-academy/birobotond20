@@ -3,12 +3,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="/style.css"/>
+    <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
     <title>Basic Webshop</title>
 </head>
 <body>
-<div id="page">
+<div id="page" class="container">
     <div id="pageBody">
-        <table>
+        <table class="table table-striped table-hover">
             <thead>
             <tr>
                 <th>Name</th>
@@ -20,31 +21,62 @@
             </tr>
             </thead>
             <tbody>
-                <th:block th:each="bankAccount : ${bankAccounts}">
-                    <tr th:class="${bankAccount.getKingStatus()} ? 'king'">
-                        <td th:text="${bankAccount.name}">Account holder name</td>
-                        <td th:text="${bankAccount.balance}">Balance</td>
-                        <td th:text="${bankAccount.animalType}">Account holder's animal type</td>
-                        <td th:text="${bankAccountStat.index}">Index in list</td>
-                        <td>
-                            <span th:if="${bankAccount.getKingStatus()}">King</span>
-                        </td>
-                        <td th:text="${bankAccount.getGoodCharacterStatus()} ? 'Good guy' : 'Bad guy'"></td>
-                    </tr>
-                </th:block>
+                <tr th:each="bankAccount : ${bankAccounts}" th:class="${bankAccount.king} ? 'king'">
+                    <td th:text="${bankAccount.name}">Account holder name</td>
+                    <td th:text="${bankAccount.balance}">Balance</td>
+                    <td th:text="${bankAccount.animalType}">Account holder's animal type</td>
+                    <td th:text="${bankAccountStat.index}">Index in list</td>
+                    <td>
+                        <span th:if="${bankAccount.king}">King</span>
+                    </td>
+                    <td th:text="${bankAccount.goodCharacter} ? 'Good guy' : 'Bad guy'"></td>
+                </tr>
             </tbody>
         </table>
 
         <form action="#" th:action="@{/raise}" th:method="post">
-            <label for="account-select">Choose animal to raise balance for:</label>
-            <select id="account-select" th:name="index">
-                <option th:each="bankAccount:${bankAccounts}"
-                        th:text="${bankAccount.name}"
-                        th:value="${bankAccountStat.index}"></option>
-            </select>
+            <label for="account-select">
+                Choose animal to raise balance for:
+                <select id="account-select" th:name="index">
+                    <option th:each="bankAccount:${bankAccounts}"
+                            th:text="${bankAccount.name}"
+                            th:value="${bankAccountStat.index}"></option>
+                </select>
+            </label>
             <button type="submit">Raise</button>
+        </form>
+
+        <p>Add new account:</p>
+        <form action="#" th:action="@{/add_account}" th:method="post" th:object="${newAccount}">
+            <label for="account-name">
+                Name:
+                <input type="text" th:field="*{name}" id="account-name">
+            </label>
+            <label for="balance">
+                Balance:
+                <input type="number" th:field="*{balance}" id="balance">
+            </label>
+            <label for="animal-type">
+                Animal type:
+                <input type="text" th:field="*{animalType}" id="animal-type">
+            </label>
+            <label for="king-checkbox">
+                King:
+                <input type="checkbox" th:checked="*{king}"
+                       th:field="*{king}"
+                       id="king-checkbox">
+            </label>
+            <label for="good-character-checkbox">
+                Good Character:
+                <input type="checkbox" th:checked="*{goodCharacter}"
+                       th:field="*{goodCharacter}"
+                       id="good-character-checkbox">
+            </label>
+            <button type="submit">Add account</button>
         </form>
     </div>
 </div>
+<script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
 </body>
 </html>

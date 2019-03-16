@@ -4,16 +4,21 @@ public class BankAccount {
     private String name;
     private int balance;
     private String animalType;
-    private boolean isKing;
-    private boolean isGoodCharacter;
+    private boolean king;
+    private boolean goodCharacter;
+
+    public BankAccount(){
+        this.king = false;
+        this.goodCharacter = true;
+    }
 
     public BankAccount(String name, int balance, String animalType, boolean initialKingStatus,
                        boolean goodCharacterStatus) {
         this.name = name;
         this.balance = balance;
         this.animalType = animalType;
-        this.isKing = initialKingStatus;
-        this.isGoodCharacter = goodCharacterStatus;
+        this.king = initialKingStatus;
+        this.goodCharacter = goodCharacterStatus;
     }
 
     public String getName() {
@@ -28,8 +33,12 @@ public class BankAccount {
         return balance;
     }
 
-    public void setBalance() {
-        if (this.getKingStatus()){
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
+    public void raiseBalance() {
+        if (this.isKing()){
             this.balance += 100;
         } else {
             this.balance += 10;
@@ -44,15 +53,19 @@ public class BankAccount {
         this.animalType = animalType;
     }
 
-    public boolean getKingStatus() {
-        return this.isKing;
+    public boolean isKing() {
+        return this.king;
     }
 
     public void setKing(boolean king) {
-        this.isKing = king;
+        this.king = king;
     }
 
-    public boolean getGoodCharacterStatus() {
-        return this.isGoodCharacter;
+    public boolean isGoodCharacter() {
+        return this.goodCharacter;
+    }
+
+    public void setGoodCharacter(boolean goodCharacter) {
+        this.goodCharacter = goodCharacter;
     }
 }

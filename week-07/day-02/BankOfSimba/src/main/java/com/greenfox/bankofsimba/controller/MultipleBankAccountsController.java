@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,14 +25,22 @@ public class MultipleBankAccountsController {
 
     @GetMapping("/list_accounts")
     public String getAccounts(Model model) {
+        model.addAttribute("newAccount", new BankAccount());
         model.addAttribute("bankAccounts", this.bankAccounts);
         return "multiple_accounts";
     }
 
     @PostMapping("/raise")
-    public String raiseAccountBalance(Model model, @RequestParam("index") Integer index) {
-        this.bankAccounts.get(index).setBalance();
-        model.addAttribute("bankAccounts", this.bankAccounts);
-        return "multiple_accounts";
+    public String raiseAccountBalance(Integer index) {
+        this.bankAccounts.get(index).raiseBalance();
+        return "redirect:/list_accounts";
+    }
+
+    @PostMapping("/add_account")
+    public String addNewAccount(BankAccount newBankAccount) {
+        if (newBankAccount != null && !(newBankAccount.getName().isEmpty())){
+            this.bankAccounts.add(newBankAccount);
+        }
+        return "redirect:/list_accounts";
     }
 }
