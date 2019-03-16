@@ -54,7 +54,7 @@ public class PostService {
         return this.postRepository.findAllByOrderByNumberOfVotesDesc(pageable);
     }
 
-    public int getNumberOfPosts(){
-        return (int)this.postRepository.count();
+    public int getNumberOfPages(){
+        return this.postRepository.findAll().size() / 10;
     }
 }

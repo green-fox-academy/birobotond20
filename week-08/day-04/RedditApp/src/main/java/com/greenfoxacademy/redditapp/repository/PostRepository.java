@@ -11,6 +11,8 @@ import java.util.List;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
 
+    // Returns all posts from the database ordered by the number of votes, descending order
+    // Same as findAllByOrderByNumberOfVotesDesc
     @Query("SELECT p FROM Post p ORDER BY numberOfVotes DESC")
     Iterable<Post> getPostsOrdered();
 

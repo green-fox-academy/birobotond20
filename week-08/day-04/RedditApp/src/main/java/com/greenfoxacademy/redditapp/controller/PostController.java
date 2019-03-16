@@ -27,7 +27,7 @@ public class PostController {
     @GetMapping(value = "/{page}/")
     public String listPosts(Model model, @PathVariable(name = "page") Integer page) {
         model.addAttribute("posts", this.postService.getTenBestPosts(page));
-//        model.addAttribute("pageNumbers", )
+        model.addAttribute("pageNumbers", this.postService.getNumberOfPages());
         return "index";
     }
 

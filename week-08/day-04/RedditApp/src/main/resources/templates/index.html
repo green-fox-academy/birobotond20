@@ -3,6 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/style/style.css"/>
     <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
     <title>Title</title>
 </head>
@@ -33,8 +34,9 @@
                 </tbody>
             </table>
 
-           <!-- <p th:each="page : ${pageNumbers}"
-                th:text="${page}"></p>-->
+            <p><a class="page-number" th:each="page : ${#numbers.sequence(0, pageNumbers)}"
+                        th:text="${page} + 1"
+                        th:href="@{'/' + ${page} + '/'}"></a></p>
         </div>
     </div>
 </div>
