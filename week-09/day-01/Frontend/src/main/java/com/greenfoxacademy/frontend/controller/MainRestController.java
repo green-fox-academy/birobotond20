@@ -1,6 +1,7 @@
 package com.greenfoxacademy.frontend.controller;
 
 import com.greenfoxacademy.frontend.model.ErrorMessage;
+import com.greenfoxacademy.frontend.model.Json;
 import com.greenfoxacademy.frontend.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -58,6 +59,16 @@ public class MainRestController {
             return new ErrorMessage("Please provide a number!");
         }
         returnMessage.put("result", this.mainService.doAction(action, until.get("until")));
+        return returnMessage;
+    }
+
+    @PostMapping(value = "/arrays")
+    public Object processArraysAsGive(@RequestBody(required = false) Json json){
+        if (json.getWhat() == null || json.getNumbers() == null){
+            return new ErrorMessage("Please provide what to do with the numbers!");
+        }
+        Map<String, Object> returnMessage = new HashMap<>();
+        returnMessage.put("result", this.mainService.doOneAction(json.getWhat(), json.getNumbers()));
         return returnMessage;
     }
 }
