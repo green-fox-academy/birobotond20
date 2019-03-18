@@ -1,24 +1,12 @@
 package com.greenfoxacademy.frontend.service;
 
-import com.greenfoxacademy.frontend.model.Doubler;
-import com.greenfoxacademy.frontend.model.ErrorMessage;
-import com.greenfoxacademy.frontend.model.Greeting;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MainService {
 
-    public Doubler doubleInput(int input){
-        Doubler doubler = new Doubler();
-        doubler.setReceived(input);
-        doubler.setResult(input * 2);
-        return doubler;
-    }
-
-    public Greeting greeting(String name, String title){
-        Greeting greeting = new Greeting();
-        greeting.setWelcomeMessage(name, title);
-        return greeting;
+    public int doubleInput(int input){
+        return input * 2;
     }
 
     public int doAction(String action, int until){

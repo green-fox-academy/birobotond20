@@ -1,7 +1,6 @@
 package com.greenfoxacademy.frontend.controller;
 
 import com.greenfoxacademy.frontend.model.ErrorMessage;
-import com.greenfoxacademy.frontend.model.Greeting;
 import com.greenfoxacademy.frontend.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,10 +20,13 @@ public class MainRestController {
 
     @GetMapping(value = "/doubling")
     public Object doubleInput(@RequestParam(name = "input", required = false) Integer input) {
+        Map<String, Integer> returnMessage = new HashMap<>();
         if (input == null) {
             return new ErrorMessage("Please provide an input!");
         }
-        return this.mainService.doubleInput(input);
+        returnMessage.put("received", input);
+        returnMessage.put("result", this.mainService.doubleInput(input));
+        return returnMessage;
     }
 
     @GetMapping(value = "/greeter")
@@ -45,7 +47,8 @@ public class MainRestController {
     @GetMapping(value = "/appenda/{appendable}")
     public Object appendA(@PathVariable(value = "appendable") String appendable){
         Map<String, String> returnMessage = new HashMap<>();
-        return returnMessage.put("appended", appendable + "a");
+        returnMessage.put("appended", appendable + "a");
+        return returnMessage;
     }
 
     @PostMapping(value = "/dountil/{action}")
