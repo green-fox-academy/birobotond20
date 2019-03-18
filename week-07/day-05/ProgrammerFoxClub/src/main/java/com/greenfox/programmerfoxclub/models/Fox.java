@@ -10,6 +10,9 @@ public class Fox {
     String favouriteFood;
     String favouriteDrink;
 
+    public Fox(){
+    }
+
     public Fox(String name){
         this.name = name;
         this.gender = Gender.FEMALE;

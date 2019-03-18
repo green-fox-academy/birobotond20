@@ -52,15 +52,14 @@ public class MainController {
     }
 
     @GetMapping("/nutritionStore")
-    public String nutritionStore(Model model, ) {
+    public String nutritionStore(Model model) {
         model.addAttribute("foxes", this.foxService.getFoxes());
-        model.addAttribute("fox", new Fox());
-        return "nutrition_store";
+        return "select_fox";
     }
 
-    @PostMapping("/nutritionStore/")
+    @PostMapping("/nutritionStore")
     public String changeFoodDrink(Model model, String name) {
         model.addAttribute("fox", this.foxService.getFoxWithName(name));
-        return "nutrition_store";
+        return "select_fox";
     }
 }
