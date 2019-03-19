@@ -18,7 +18,7 @@ public class LogEntry {
         this.createdAt = new Date();
     }
 
-    public LogEntry(String endpoint, String data, Date createdAt) {
+    public LogEntry(String endpoint, String data) {
         this.endpoint = endpoint;
         this.data = data;
         this.createdAt = new Date();
