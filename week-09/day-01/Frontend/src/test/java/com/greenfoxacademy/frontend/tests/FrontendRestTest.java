@@ -1,5 +1,6 @@
 package com.greenfoxacademy.frontend.tests;
 
+import com.greenfoxacademy.frontend.controller.MainController;
 import com.greenfoxacademy.frontend.controller.MainRestController;
 import com.greenfoxacademy.frontend.service.LogEntryService;
 import com.greenfoxacademy.frontend.service.MainService;
@@ -9,19 +10,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockBodyContent;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.web.servlet.ModelAndView;
 
-import static org.mockito.ArgumentMatchers.any;
+import java.nio.file.Paths;
+
+import static org.hamcrest.Matchers.containsString;
+import static org.junit.Assert.assertThat;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
 // http hívásokhoz kell, innentől tudjuk használni a MockMvc-t, a program pedig tudja, hogy mit kell autowirelni
-@WebMvcTest(MainRestController.class)
+@WebMvcTest({MainRestController.class, MainController.class})
 public class FrontendRestTest {
 
     @MockBean
@@ -29,6 +35,9 @@ public class FrontendRestTest {
 
     @MockBean
     private MainService mainService;
+
+    @MockBean
+    private MainController mainController;
 
     @Autowired
     private MockMvc mockMvc;
@@ -71,27 +80,27 @@ public class FrontendRestTest {
     }
 
     @Test
-    public void appendA_ReturnError404IsNotFoundWhenNoPathVariableIsPresent() throws Exception{
+    public void appendA_ReturnError404IsNotFoundWhenNoPathVariableIsPresent() throws Exception {
         mockMvc.perform(get("/appenda/"))
                 .andExpect(status().isNotFound());
     }
 
     @Test
-    public void appendA_ReturnPathVariableInputWithLetterAAppendedToItWhenInputIsPresent() throws Exception{
+    public void appendA_ReturnPathVariableInputWithLetterAAppendedToItWhenInputIsPresent() throws Exception {
         mockMvc.perform(get("/appenda/kuty"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.appended")
                         .value("kutya"));
     }
 
     @Test
-    public void doUntil_ReturnPageNotFoundErrorWhenCalledWithoutAction() throws Exception{
+    public void doUntil_ReturnPageNotFoundErrorWhenCalledWithoutAction() throws Exception {
 
         mockMvc.perform(put("/dountil/"))
                 .andExpect(status().isNotFound());
     }
 
     @Test
-    public void doUntil_ReturnCorrectResultWhenSumActionAndBodyArePresent() throws Exception{
+    public void doUntil_ReturnCorrectResultWhenSumActionAndBodyArePresent() throws Exception {
 
         when(mainService.doAction(eq("sum"), eq(5))).thenReturn(15);
 
@@ -103,7 +112,7 @@ public class FrontendRestTest {
     }
 
     @Test
-    public void doUntil_ReturnPredefinedErrorWhenNoContentIsPresent() throws Exception{
+    public void doUntil_ReturnPredefinedErrorWhenNoContentIsPresent() throws Exception {
 
         mockMvc.perform(post("/dountil/sum"))
                 .andExpect(MockMvcResultMatchers.jsonPath("error")
@@ -111,13 +120,13 @@ public class FrontendRestTest {
     }
 
     @Test
-    public void processArraysAsGiven_ReturnCorrectResultWhenWhatIsDoubleAndNumbersArraysIsPresent() throws Exception{
+    public void processArraysAsGiven_ReturnCorrectResultWhenWhatIsDoubleAndNumbersArraysIsPresent() throws Exception {
 
-        when(mainService.doOneAction(eq("double"), eq(new int[]{1,2,5,10}))).thenReturn(new int[]{2,4,10,20});
+        when(mainService.doOneAction(eq("double"), eq(new int[]{1, 2, 5, 10}))).thenReturn(new int[]{2, 4, 10, 20});
 
         mockMvc.perform(post("/arrays/")
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content("{\"what\": \"double\", \"numbers\": [1,2,5,10]}"))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"what\": \"double\", \"numbers\": [1,2,5,10]}"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.result[0]").value(2))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.result[1]").value(4))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.result[2]").value(10))
@@ -125,13 +134,19 @@ public class FrontendRestTest {
     }
 
     @Test
-    public void processArraysAsGiven_ReturnCorrectResultWhenWhatIsMultiplyAndNumbersArraysIsPresent() throws Exception{
+    public void processArraysAsGiven_ReturnCorrectResultWhenWhatIsMultiplyAndNumbersArraysIsPresent() throws Exception {
 
-        when(mainService.doOneAction(eq("multiply"), eq(new int[]{1,2,5,10}))).thenReturn(100);
+        when(mainService.doOneAction(eq("multiply"), eq(new int[]{1, 2, 5, 10}))).thenReturn(100);
 
         mockMvc.perform(post("/arrays/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"what\": \"multiply\", \"numbers\": [1,2,5,10]}"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.result").value(100));
+    }
+
+    @Test
+    public void renderIndexFromMainController_ReturnHtmlPageWhenCalled() throws Exception {
+
+        when(this.mainController.renderIndex()).thenReturn("index");
     }
 }
