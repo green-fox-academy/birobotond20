@@ -52,21 +52,21 @@ public class FrontendRestTest {
     @Test
     public void greeter_ReturnErrorNameRequiredWhenNameIsMissing() throws Exception {
         mockMvc.perform(get("/greeter?title=scholar"))
-                .andExpect(MockMvcResultMatchers.jsonPath("error")
+                .andExpect(MockMvcResultMatchers.jsonPath("$.error")
                         .value("Please provide a name!"));
     }
 
     @Test
     public void greeter_ReturnErrorTitleRequiredWhenTitleIsMissing() throws Exception {
         mockMvc.perform(get("/greeter?name=Peter"))
-                .andExpect(MockMvcResultMatchers.jsonPath("error")
+                .andExpect(MockMvcResultMatchers.jsonPath("$.error")
                         .value("Please provide a title!"));
     }
 
     @Test
     public void greeter_ReturnWelcomeMessageWithNameAndTitleWhenBothArePresent() throws Exception {
         mockMvc.perform(get("/greeter?name=Peter&title=scholar"))
-                .andExpect(MockMvcResultMatchers.jsonPath("welcome_message")
+                .andExpect(MockMvcResultMatchers.jsonPath("$.welcome_message")
                         .value("Oh, hi there Peter, my dear scholar!"));
     }
 
@@ -79,7 +79,8 @@ public class FrontendRestTest {
     @Test
     public void appendA_ReturnPathVariableInputWithLetterAAppendedToItWhenInputIsPresent() throws Exception{
         mockMvc.perform(get("/appenda/kuty"))
-                .andExpect(MockMvcResultMatchers.jsonPath("appended").value("kutya"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.appended")
+                        .value("kutya"));
     }
 
     @Test
@@ -121,5 +122,16 @@ public class FrontendRestTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.result[1]").value(4))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.result[2]").value(10))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.result[3]").value(20));
+    }
+
+    @Test
+    public void processArraysAsGiven_ReturnCorrectResultWhenWhatIsMultiplyAndNumbersArraysIsPresent() throws Exception{
+
+        when(mainService.doOneAction(eq("multiply"), eq(new int[]{1,2,5,10}))).thenReturn(100);
+
+        mockMvc.perform(post("/arrays/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"what\": \"multiply\", \"numbers\": [1,2,5,10]}"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.result").value(100));
     }
 }
