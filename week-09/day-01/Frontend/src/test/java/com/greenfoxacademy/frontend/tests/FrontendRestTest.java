@@ -8,13 +8,14 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -81,5 +82,20 @@ public class FrontendRestTest {
     }
 
     @Test
-    public void 
+    public void doUntil_ReturnPageNotFoundErrorWhenCalledWithoutAction() throws Exception{
+
+        mockMvc.perform(put("/dountil/"))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    public void doUntil_ReturnCorrectResultWhenSumActionAndBodyArePresent() throws Exception{
+
+        when(mainService.doAction(eq("sum"), eq(5))).thenReturn(15);
+
+        mockMvc.perform(post("/dountil/sum")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"until\": 5}"))
+                .andExpect(MockMvcResultMatchers.jsonPath("result").value(15));
+    }
 }
