@@ -84,12 +84,13 @@ public class MainRestController {
     }
 
     @PostMapping(value = "/arrays")
-    public Object processArraysAsGive(@RequestBody(required = false) Json json){
+    public Object processArraysAsGiven(@RequestBody(required = false) Json json){
         if (json.getWhat() == null || json.getNumbers() == null){
             this.logEntryService.saveLogEntry(new LogEntry("/arrays",
                     "action: " + json.getWhat() + "; numbers: " + Arrays.toString(json.getNumbers())));
             return new ErrorMessage("Please provide what to do with the numbers!");
         }
+
         Map<String, Object> returnMessage = new HashMap<>();
         returnMessage.put("result", this.mainService.doOneAction(json.getWhat(), json.getNumbers()));
         this.logEntryService.saveLogEntry(new LogEntry("/arrays",

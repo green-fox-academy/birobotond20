@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -96,6 +97,29 @@ public class FrontendRestTest {
         mockMvc.perform(post("/dountil/sum")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"until\": 5}"))
-                .andExpect(MockMvcResultMatchers.jsonPath("result").value(15));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.result")
+                        .value(15));
+    }
+
+    @Test
+    public void doUntil_ReturnPredefinedErrorWhenNoContentIsPresent() throws Exception{
+
+        mockMvc.perform(post("/dountil/sum"))
+                .andExpect(MockMvcResultMatchers.jsonPath("error")
+                        .value("Please provide a number!"));
+    }
+
+    @Test
+    public void processArraysAsGiven_ReturnCorrectResultWhenWhatIsDoubleAndNumbersArraysIsPresent() throws Exception{
+
+        when(mainService.doOneAction(eq("double"), eq(new int[]{1,2,5,10}))).thenReturn(new int[]{2,4,10,20});
+
+        mockMvc.perform(post("/arrays/")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content("{\"what\": \"double\", \"numbers\": [1,2,5,10]}"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.result[0]").value(2))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.result[1]").value(4))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.result[2]").value(10))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.result[3]").value(20));
     }
 }
