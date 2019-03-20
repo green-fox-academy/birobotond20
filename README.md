@@ -13,4 +13,4 @@ repository")
 syllabus](https://github.com/green-fox-academy/teaser-syllabus 
 "Megalotis Teaser syllabus")
 
-[p2p-chat-all](https://github.com/birobotond20/p2p-chat)
+[p2p-chat](https://github.com/birobotond20/p2p-chat "p2p-chat-app")
