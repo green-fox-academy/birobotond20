@@ -26,10 +26,9 @@
 
 *.txt
 
-# Kotlin module
+### Kotlin ###
 *.kotlin_module
 
-### Gradle Files###
+### Gradle Files ###
 *.gradle
-*.jar
 *.properties
