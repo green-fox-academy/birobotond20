@@ -10,20 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockBodyContent;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.nio.file.Paths;
-
-import static org.hamcrest.Matchers.containsString;
-import static org.junit.Assert.assertThat;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 // http hívásokhoz kell, innentől tudjuk használni a MockMvc-t, a program pedig tudja, hogy mit kell autowirelni
@@ -120,7 +114,7 @@ public class FrontendRestTest {
     }
 
     @Test
-    public void processArraysAsGiven_ReturnCorrectResultWhenWhatIsDoubleAndNumbersArraysIsPresent() throws Exception {
+    public void processArrayAsGiven_ReturnCorrectResultWhenWhatIsDoubleAndNumbersArrayIsPresent() throws Exception {
 
         when(mainService.doOneAction(eq("double"), eq(new int[]{1, 2, 5, 10}))).thenReturn(new int[]{2, 4, 10, 20});
 
@@ -134,7 +128,7 @@ public class FrontendRestTest {
     }
 
     @Test
-    public void processArraysAsGiven_ReturnCorrectResultWhenWhatIsMultiplyAndNumbersArraysIsPresent() throws Exception {
+    public void processArrayAsGiven_ReturnCorrectResultWhenWhatIsMultiplyAndNumbersArrayIsPresent() throws Exception {
 
         when(mainService.doOneAction(eq("multiply"), eq(new int[]{1, 2, 5, 10}))).thenReturn(100);
 
