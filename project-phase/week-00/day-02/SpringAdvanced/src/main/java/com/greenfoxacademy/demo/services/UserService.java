@@ -1,5 +1,6 @@
 package com.greenfoxacademy.demo.services;
 
+import com.greenfoxacademy.demo.encryptions.PasswordEncrypter;
 import com.greenfoxacademy.demo.models.User;
 import com.greenfoxacademy.demo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ public class UserService {
         } else if (isInDatabase(newUser.getUserName())) {
             this.saveMessage = "This username is already taken";
         } else {
+            newUser.setPassword(PasswordEncrypter.encryptPassword(newUser.getPassword()));
             this.userRepository.save(newUser);
             this.saveMessage = "Saved new user";
         }
