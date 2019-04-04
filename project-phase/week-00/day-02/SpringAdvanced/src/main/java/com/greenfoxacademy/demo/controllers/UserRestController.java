@@ -30,14 +30,14 @@ public class UserRestController {
                 "/user/list → list users";
     }
 
-    @PostMapping(path = "/user/add")
+    @PostMapping(path = "/user/register")
     public Object saveUser(@RequestBody User newUser) {
         Map<String, String> returnMessage = new HashMap<>();
         if (newUser == null) {
             returnMessage.put("message", "No User object received");
             return new ResponseEntity(returnMessage, null, HttpStatus.NOT_ACCEPTABLE);
         }
-        this.userService.saveNewUser(newUser);
+        this.userService.registerUser(newUser);
         returnMessage.put("message", this.userService.saveMessage);
         return returnMessage;
     }
