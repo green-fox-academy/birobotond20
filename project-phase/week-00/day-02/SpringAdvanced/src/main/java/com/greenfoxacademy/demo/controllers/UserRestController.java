@@ -25,7 +25,9 @@ public class UserRestController {
 
     @GetMapping(path = "/")
     public Object returnGreetMessage() {
-        return "Hello. This is your greeting! Never get old!";
+        return "Endpoints you can use:\n" +
+                "/user/add → register user(username, password in JSON format)\n" +
+                "/user/list → list users";
     }
 
     @PostMapping(path = "/user/add")
@@ -38,5 +40,10 @@ public class UserRestController {
         this.userService.saveNewUser(newUser);
         returnMessage.put("message", this.userService.saveMessage);
         return returnMessage;
+    }
+
+    @GetMapping(path = "/user/list")
+    public Object getUsers(){
+        return this.userService.getUserList();
     }
 }
