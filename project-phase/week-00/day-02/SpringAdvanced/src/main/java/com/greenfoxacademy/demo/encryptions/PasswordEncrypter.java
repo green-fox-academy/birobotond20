@@ -30,9 +30,9 @@ public class PasswordEncrypter {
             try {
                 return new String(base64Decoder.decodeBuffer(encryptedPassword));
             } catch (IOException ex){
-                return "";
+                return null;
             }
         }
-        return "";
+        return null;
     }
 }
