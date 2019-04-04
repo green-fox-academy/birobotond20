@@ -23,7 +23,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public void saveNewUser(User newUser) {
+    public void registerUser(User newUser) {
         this.saveMessage = "";
         if (userDataNotPresent(newUser.getUserName())) {
             this.saveMessage = "No username entered";
