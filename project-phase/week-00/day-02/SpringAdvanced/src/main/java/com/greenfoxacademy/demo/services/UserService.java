@@ -6,6 +6,8 @@ import com.greenfoxacademy.demo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -30,6 +32,10 @@ public class UserService {
             this.userRepository.save(newUser);
             this.saveMessage = "Saved new user";
         }
+    }
+
+    public List<User> getUserList(){
+        return this.userRepository.getAllUsersUserName();
     }
 
     private boolean userDataNotPresent(String userData) {
