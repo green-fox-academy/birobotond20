@@ -20,6 +20,16 @@ public class User {
     public User() {
     }
 
+    // Create a copy constructor
+    // We are going to use this to copy the values.
+    // We are going to use this from the child class {@link}UserDetails
+    public User(User user){
+        this.id = user.getId();
+        this.userName = user.getUserName();
+        this.password = user.getPassword();
+        this.userRoles = user.getUserRoles();
+    }
+
     public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
@@ -47,5 +57,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Role> getUserRoles() {
+        return this.userRoles;
+    }
+
+    public void setUserRoles(List<Role> userRoles) {
+        this.userRoles = userRoles;
     }
 }
